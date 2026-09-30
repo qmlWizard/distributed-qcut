@@ -1,0 +1,5 @@
+pennyLane==0.41.0
+pennyLane-lightning==0.41.0
+matplotlib
+tqdm
+ray
