@@ -1,5 +1,6 @@
 import math
 import os
+import shutil
 import socket
 import subprocess
 import time
@@ -14,6 +15,14 @@ RAY_TASK_CPUS = 1
 
 def log(message):
     print(f"[RAY] {message}", flush=True)
+
+
+def _available_cpus():
+    """CPUs this process may actually use (respects affinity / cgroup-style pinning)."""
+    try:
+        return len(os.sched_getaffinity(0))
+    except AttributeError:
+        return os.cpu_count() or 1
 
 
 # ------------------------------------------------------------
@@ -40,10 +49,12 @@ def _run_chunk_remote(circuits, shots):
 
 
 class RayAgent:
-    def __init__(self, num_cpus_per_node=48, port=6379, startup_timeout=180, ray_auth_mode="disabled"):
+    def __init__(self, num_cpus_per_node=48, port=6379, startup_timeout=180,
+                 ray_auth_mode="disabled", local_num_cpus=None):
         self.num_cpus_per_node = num_cpus_per_node
         self.port = port
         self.startup_timeout = startup_timeout
+        self.local_num_cpus = local_num_cpus   # CPUs to use in local (non-Slurm) mode; None = all available
         self.nodes = []              # Slurm hostnames
         self.head_node = None
         self.head_ip = None
@@ -52,21 +63,36 @@ class RayAgent:
         self.ray_nodes = []
         self.init_time = 0.0
         self.cluster_start_time = 0.0
-        self._procs = []             
-        self._owns_cluster = False  
+        self.local_mode = False      # True when running a local single-node Ray instance
+        self._procs = []
+        self._owns_cluster = False
         os.environ.setdefault("RAY_AUTH_MODE", ray_auth_mode)
 
     # --------------------------------------------------------
     # Setup
     # --------------------------------------------------------
+    @staticmethod
+    def slurm_available():
+        """True if we are inside a Slurm allocation and Slurm tools are usable."""
+        return bool(os.environ.get("SLURM_JOB_NODELIST")) and shutil.which("srun") is not None \
+            and shutil.which("scontrol") is not None
+
     def initialise(self, expected_nodes=None):
-        """One-call setup. Attaches to an existing cluster if RAY_ADDRESS is set,
-        otherwise builds one inside the current Slurm allocation, then connects."""
+        """One-call setup.
+        1. If RAY_ADDRESS is set, attach to that existing cluster.
+        2. Else if running inside a Slurm allocation, build a cluster over its nodes.
+        3. Else (no Slurm, single machine), start a local Ray instance that
+           parallelises over the CPUs of this node.
+        Then connects the driver."""
         if os.environ.get("RAY_ADDRESS"):
             log(f"RAY_ADDRESS found ({os.environ['RAY_ADDRESS']}); using existing cluster")
             self.ray_address = os.environ["RAY_ADDRESS"]
-        else:
+        elif self.slurm_available():
             self.create_ray_cluster()
+        else:
+            log("Slurm not available and no RAY_ADDRESS set; using local single-node Ray")
+            self.local_mode = True
+            expected_nodes = expected_nodes or 1
         return self.connect_ray(expected_nodes=expected_nodes or (len(self.nodes) or None))
 
     def create_ray_cluster(self):
@@ -119,34 +145,47 @@ class RayAgent:
     # --------------------------------------------------------
     # Connect / teardown
     # --------------------------------------------------------
+    def _connect_local(self):
+        """Start (or reuse) a local single-node Ray instance using this machine's CPUs."""
+        num_cpus = self.local_num_cpus or _available_cpus()
+        log(f"Starting local Ray instance with {num_cpus} CPUs")
+        ray.init(num_cpus=num_cpus, ignore_reinit_error=True,
+                 include_dashboard=False, logging_level="WARNING")
+        self.ray_address = "local"
+
     def connect_ray(self, expected_nodes=None):
         """Connect the driver, retrying until the head is up, then wait for workers
-        (polls instead of fixed sleeps)."""
-        address = self.ray_address or os.environ.get("RAY_ADDRESS")
-        if not address:
-            raise RuntimeError("RAY_ADDRESS is not set and no cluster was created.")
-
+        (polls instead of fixed sleeps). In local mode, starts a local Ray instance."""
         t0 = time.perf_counter()
-        deadline = t0 + self.startup_timeout
-        while True:
-            try:
-                ray.init(address=address, ignore_reinit_error=True,
-                         include_dashboard=False, logging_level="WARNING")
-                break
-            except Exception as exc:
-                if time.perf_counter() > deadline:
-                    raise RuntimeError(f"Could not connect to Ray at {address}: {exc}")
-                time.sleep(2)
 
-        if expected_nodes:
+        if self.local_mode:
+            self._connect_local()
+            address = self.ray_address
+        else:
+            address = self.ray_address or os.environ.get("RAY_ADDRESS")
+            if not address:
+                raise RuntimeError("RAY_ADDRESS is not set and no cluster was created.")
+
+            deadline = t0 + self.startup_timeout
             while True:
-                alive = [n for n in ray.nodes() if n.get("Alive")]
-                if len(alive) >= expected_nodes:
+                try:
+                    ray.init(address=address, ignore_reinit_error=True,
+                             include_dashboard=False, logging_level="WARNING")
                     break
-                if time.perf_counter() > deadline:
-                    log(f"WARNING: only {len(alive)}/{expected_nodes} nodes joined before timeout")
-                    break
-                time.sleep(2)
+                except Exception as exc:
+                    if time.perf_counter() > deadline:
+                        raise RuntimeError(f"Could not connect to Ray at {address}: {exc}")
+                    time.sleep(2)
+
+            if expected_nodes:
+                while True:
+                    alive = [n for n in ray.nodes() if n.get("Alive")]
+                    if len(alive) >= expected_nodes:
+                        break
+                    if time.perf_counter() > deadline:
+                        log(f"WARNING: only {len(alive)}/{expected_nodes} nodes joined before timeout")
+                        break
+                    time.sleep(2)
 
         self.init_time = time.perf_counter() - t0
         self.total_cpus = int(ray.cluster_resources().get("CPU", 0))
@@ -154,7 +193,7 @@ class RayAgent:
         self.ray_address = address
 
         log("=" * 60)
-        log(f"Ray address : {address}")
+        log(f"Ray address : {address}{' (local mode)' if self.local_mode else ''}")
         log(f"Ray nodes   : {len(self.ray_nodes)}")
         log(f"Ray CPUs    : {self.total_cpus}")
         log(f"Connect time: {self.init_time:.3f} s")
@@ -164,9 +203,14 @@ class RayAgent:
         return self.total_cpus, self.ray_nodes, self.init_time
 
     def stop_ray_clusters(self):
-        """Disconnect; tear down the cluster only if this agent created it."""
+        """Disconnect; tear down the cluster only if this agent created it.
+        In local mode, ray.shutdown() also stops the locally started instance."""
         if ray.is_initialized():
             ray.shutdown()
+        if self.local_mode:
+            self.local_mode = False
+            log("Local Ray instance stopped")
+            return
         if not self._owns_cluster:
             return
         for node in self.nodes:
@@ -221,8 +265,8 @@ class RayAgent:
         ]
         t_submit = time.perf_counter() - t_wall0
         num_tasks = len(submitted)
-        log(f"Submitted {total_circuits} circuits as {num_tasks} Ray tasks "
-            f"(chunk size {chunk_size}, {total_cpus} CPUs) in {t_submit:.3f} s")
+        #log(f"Submitted {total_circuits} circuits as {num_tasks} Ray tasks "
+        #    f"(chunk size {chunk_size}, {total_cpus} CPUs) in {t_submit:.3f} s")
 
         # ---- execute + gather ----
         t1 = time.perf_counter()
@@ -276,7 +320,8 @@ class RayAgent:
             "per_fragment_circuits": per_label_counts,
             "tasks": tasks,
         }
-        log(f"Done in {t_wall:.2f} s | {info['circuits_per_second']:.1f} circuits/s | "
-            f"efficiency {info['measured_cpu_efficiency']:.1%} | nodes used {len(per_node)}")
+
+        #log(f"Done in {t_wall:.2f} s | {info['circuits_per_second']:.1f} circuits/s | "
+        #    f"efficiency {info['measured_cpu_efficiency']:.1%} | nodes used {len(per_node)}")
 
         return {l: PrimitiveResult(v) for l, v in results.items()}, info
