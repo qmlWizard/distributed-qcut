@@ -1,0 +1,828 @@
+==========================================
+SLURM_CLUSTER_NAME = rudra20pf-hpc
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = cdac
+SLURM_JOB_ID = 87699
+SLURM_JOB_NAME = qiskit-cutting
+SLURM_JOB_NODELIST = cbcn[0069-0073,0424-0443]
+SLURM_JOB_USER = santhoshj
+SLURM_JOB_UID = 80040
+SLURM_JOB_PARTITION = terai
+SLURM_TASK_PID = 1497665
+SLURM_SUBMIT_DIR = /home/cdacB/santhoshj/digvijay/distributed-qcut
+SLURM_CPUS_ON_NODE = 48
+SLURM_NTASKS = 25
+SLURM_TASK_PID = 1497665
+==========================================
+Open file limit:
+65535
+==========================================
+SLURM JOB ID      : 87699
+SLURM JOB NAME    : qiskit-cutting
+NUMBER OF NODES   : 25
+CPUS PER NODE     : 48
+HEAD NODE         : cbcn0069
+==========================================
+Allocated nodes:
+cbcn0069
+cbcn0070
+cbcn0071
+cbcn0072
+cbcn0073
+cbcn0424
+cbcn0425
+cbcn0426
+cbcn0427
+cbcn0428
+cbcn0429
+cbcn0430
+cbcn0431
+cbcn0432
+cbcn0433
+cbcn0434
+cbcn0435
+cbcn0436
+cbcn0437
+cbcn0438
+cbcn0439
+cbcn0440
+cbcn0441
+cbcn0442
+cbcn0443
+Ray HEAD IP: 172.40.1.69
+Starting Ray head...
+2026-10-06 11:45:44,726	INFO usage_lib.py:474 -- Usage stats collection is enabled by default without user confirmation because this terminal is detected to be non-interactive. To disable this, add `--disable-usage-stats` to the command that starts the cluster, or run the following command: `ray disable-usage-stats` before starting the cluster. See https://docs.ray.io/en/master/cluster/usage-stats.html for more details.
+2026-10-06 11:45:44,727	INFO scripts.py:1043 -- Local node IP: 172.40.1.69
+2026-10-06 11:45:47,050	SUCC scripts.py:1084 -- --------------------
+2026-10-06 11:45:47,050	SUCC scripts.py:1085 -- Ray runtime started.
+2026-10-06 11:45:47,050	SUCC scripts.py:1086 -- --------------------
+2026-10-06 11:45:47,050	INFO scripts.py:1088 -- Next steps
+2026-10-06 11:45:47,050	INFO cli_output_helpers.py:16 -- Note: The following commands are intended for use on
+2026-10-06 11:45:47,050	INFO cli_output_helpers.py:17 -- the head node or within the cluster network.
+2026-10-06 11:45:47,050	INFO scripts.py:1092 -- To add another node to this Ray cluster, run
+2026-10-06 11:45:47,050	INFO scripts.py:1095 --   ray start --address='172.40.1.69:6379'
+2026-10-06 11:45:47,050	INFO scripts.py:1106 -- To connect to this Ray cluster:
+2026-10-06 11:45:47,051	INFO scripts.py:1108 -- import ray
+2026-10-06 11:45:47,051	INFO scripts.py:1109 -- ray.init(_node_ip_address='172.40.1.69')
+2026-10-06 11:45:47,051	INFO scripts.py:1142 -- To terminate the Ray runtime, run
+2026-10-06 11:45:47,051	INFO scripts.py:1143 --   ray stop
+2026-10-06 11:45:47,051	INFO scripts.py:1146 -- To view the status of the cluster, use
+2026-10-06 11:45:47,051	INFO scripts.py:1147 --   ray status
+2026-10-06 11:45:47,051	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:47,051	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:47,051	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:47,051	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+==========================================
+RAY_ADDRESS = 172.40.1.69:6379
+==========================================
+Starting Ray workers...
+Waiting for Ray workers...
+2026-10-06 11:45:54,950	INFO scripts.py:1234 -- Local node IP: 172.40.2.173
+2026-10-06 11:45:54,951	INFO scripts.py:1234 -- Local node IP: 172.40.2.171
+2026-10-06 11:45:56,137	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:54,950	INFO scripts.py:1234 -- Local node IP: 172.40.1.72
+2026-10-06 11:45:56,137	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,137	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,137	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,137	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,137	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,137	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,137	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,137	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,137	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,137	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,137	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,137	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,137	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,138	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,137	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,137	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,137	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,138	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,137	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,137	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,138	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,138	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,137	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,138	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,138	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,138	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,955	INFO scripts.py:1234 -- Local node IP: 172.40.2.170
+2026-10-06 11:45:56,142	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,142	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,142	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,142	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,142	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:54,955	INFO scripts.py:1234 -- Local node IP: 172.40.1.71
+2026-10-06 11:45:56,142	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,142	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,143	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,143	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,143	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,143	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,143	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,143	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,143	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,143	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,143	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,143	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,143	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,958	INFO scripts.py:1234 -- Local node IP: 172.40.1.70
+2026-10-06 11:45:56,145	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,145	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,145	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,145	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,145	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,146	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,146	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,146	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,146	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,963	INFO scripts.py:1234 -- Local node IP: 172.40.2.180
+2026-10-06 11:45:54,963	INFO scripts.py:1234 -- Local node IP: 172.40.2.174
+2026-10-06 11:45:56,151	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,151	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,151	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,151	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,151	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,151	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,151	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,151	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,151	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,151	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,151	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,151	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,151	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,151	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,151	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,151	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,151	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,151	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,967	INFO scripts.py:1234 -- Local node IP: 172.40.2.172
+2026-10-06 11:45:56,153	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,153	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,153	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,154	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,154	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,154	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,154	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,154	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,154	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,968	INFO scripts.py:1234 -- Local node IP: 172.40.2.176
+2026-10-06 11:45:56,155	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,155	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,155	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,155	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,155	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,156	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,156	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,156	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,156	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,988	INFO scripts.py:1234 -- Local node IP: 172.40.2.182
+2026-10-06 11:45:54,989	INFO scripts.py:1234 -- Local node IP: 172.40.2.178
+2026-10-06 11:45:56,177	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,177	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,178	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,178	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,178	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,178	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,178	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,178	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,178	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,178	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,178	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,178	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,178	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,178	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,178	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,178	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,178	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,178	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,989	INFO scripts.py:1234 -- Local node IP: 172.40.2.183
+2026-10-06 11:45:56,178	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,179	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,179	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,179	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,179	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,179	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,179	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,179	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,179	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,989	INFO scripts.py:1234 -- Local node IP: 172.40.2.175
+2026-10-06 11:45:56,179	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,179	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,179	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,179	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,179	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,179	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,179	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,179	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,179	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,988	INFO scripts.py:1234 -- Local node IP: 172.40.2.187
+2026-10-06 11:45:54,981	INFO scripts.py:1234 -- Local node IP: 172.40.2.177
+2026-10-06 11:45:56,179	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,179	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,179	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,179	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,179	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,179	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,179	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,179	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,179	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,179	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,179	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,179	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,180	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,180	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,180	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,180	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,180	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,180	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,988	INFO scripts.py:1234 -- Local node IP: 172.40.2.188
+2026-10-06 11:45:56,179	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,179	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,180	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,180	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,180	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:54,984	INFO scripts.py:1234 -- Local node IP: 172.40.2.184
+2026-10-06 11:45:56,179	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,180	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,180	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,180	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,180	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,180	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,180	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,180	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,180	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,180	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,180	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,180	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,180	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:54,989	INFO scripts.py:1234 -- Local node IP: 172.40.2.189
+2026-10-06 11:45:56,180	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,180	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,180	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,181	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,181	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:54,995	INFO scripts.py:1234 -- Local node IP: 172.40.2.179
+2026-10-06 11:45:56,180	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,181	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,181	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,181	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,181	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,181	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,181	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,181	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,181	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:56,181	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,181	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,181	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,181	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:55,012	INFO scripts.py:1234 -- Local node IP: 172.40.2.185
+2026-10-06 11:45:56,197	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,197	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,197	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,197	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,198	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,198	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,198	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,198	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,198	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:55,029	INFO scripts.py:1234 -- Local node IP: 172.40.2.181
+2026-10-06 11:45:56,217	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,217	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,217	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,217	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,217	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,217	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,217	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,217	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,217	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:55,051	INFO scripts.py:1234 -- Local node IP: 172.40.1.73
+2026-10-06 11:45:56,236	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,236	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,236	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,236	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,237	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,237	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,237	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,237	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,237	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+2026-10-06 11:45:55,114	INFO scripts.py:1234 -- Local node IP: 172.40.2.186
+2026-10-06 11:45:56,300	SUCC scripts.py:1250 -- --------------------
+2026-10-06 11:45:56,301	SUCC scripts.py:1251 -- Ray runtime started.
+2026-10-06 11:45:56,301	SUCC scripts.py:1252 -- --------------------
+2026-10-06 11:45:56,301	INFO scripts.py:1254 -- To terminate the Ray runtime, run
+2026-10-06 11:45:56,301	INFO scripts.py:1255 --   ray stop
+2026-10-06 11:45:56,301	INFO scripts.py:1265 -- --block
+2026-10-06 11:45:56,301	INFO scripts.py:1266 -- This command will now block forever until terminated by a signal.
+2026-10-06 11:45:56,301	INFO scripts.py:1269 -- Running subprocesses are monitored and a message will be printed if any of them terminate unexpectedly. Subprocesses exit with SIGTERM will be treated as graceful, thus NOT reported.
+2026-10-06 11:45:56,301	INFO scripts.py:1274 -- Process exit logs will be saved to: /tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/ray_process_exit.log
+==========================================
+Ray cluster status
+==========================================
+======== Autoscaler status: 2026-10-06 11:46:10.762830 ========
+Node status
+---------------------------------------------------------------
+Active:
+ 1 node_7697873934bd7798347a87ddb32f2cfea2960d269fc40781475ab220
+ 1 node_0fdd49ef1a19226a06133942ad93dacdc9755e0c3bba691e1da9d769
+ 1 node_b69812b8d9392953a19e7b4fb011c0e8cd4a7a30ad5d3349b577ebec
+ 1 node_52fcfa69a47b8b810308b080244e55ea6185c6189f49475d07811286
+ 1 node_b11a7e41d132c51981543dcde5953d2727cb180bfea76ab42c79245d
+ 1 node_2d0e80fa9c79b0dd63918201c95c0817a76490de8865ca9d7ceaa620
+ 1 node_5ef519040f45a4bb6fdb062aebb5636ba33d5bcd186ccc8985d976cf
+ 1 node_1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15
+ 1 node_72162aa279364a5e5d644a02fc68bb0207d93555f25b7df5a18c9d50
+ 1 node_554fe8ddda53abd3a74bdc398f55c072187c80f3e4af98d6438387d4
+ 1 node_d7717e2c0c068695ed3b5b652146af88f1cc80e3694f468b2c579309
+ 1 node_ead171ae382c9a1ba8b53eb6eb103aee7f15ab2b6edcd2460edcc5e6
+ 1 node_85a6e06841189b8811e10f01778ddb992d4db04b9897bf769323cd51
+ 1 node_b4dce9ceb52e4f71fea30628ba8ab8cb12483f110d29ef3060d8c360
+ 1 node_6d1a859cb10e99296fd69cf9207869860827ea915ed4bd88a918e10e
+ 1 node_ae1710674ca6ab8e84beebb00159cdacc83b9b8095de47c595fc165f
+ 1 node_220fbd4708f31144cdfb5ede06cc9887a3095aa85583dd08213225a3
+ 1 node_a6f1cc9701d89fbf58913172a69a4df4eff686f0663bd2d05c48d6d5
+ 1 node_970767b0b2a38c9b0efe5edb928df01cc554736ba5f656ca90fb7cbe
+ 1 node_ea2567f00907c9fa0ba6b2d80cbdad9995848d90ed90bca65cb2830b
+ 1 node_0445296d8fe51dade55eb9adcf1a6e0431b74492266bd09e5ad4e6a9
+ 1 node_eabf2737929a25bd40d1f12aa4411c33a25a2a6282ab83296cf2abaa
+ 1 node_d1ab6c774066945f4e344c09f5382507027f251aa65edb38c13588aa
+ 1 node_182519eac6482697a898e2e6b9efd30095e7116c54e1e0236f3f992f
+ 1 node_6f4294e763996c29ce5ef616cfecc0b1ba55cc73e401e6075f24c331
+Pending:
+ (no pending nodes)
+Recent failures:
+ (no failures)
+
+Resources
+---------------------------------------------------------------
+Total Usage:
+ 0.0/1200.0 CPU
+ 0B/3.07TiB memory
+ 0B/1.31TiB object_store_memory
+
+From request_resources:
+ (none)
+Pending Demands:
+ (no resource demands)
+==========================================
+Starting Qiskit circuit-cutting driver
+==========================================
+Inside
+Into Code
+[QISKIT] Connecting to Ray at: 172.40.1.69:6379
+[QISKIT] ======================================================================
+[QISKIT] RAY CONNECTION
+[QISKIT] ======================================================================
+[QISKIT] Ray address    : 172.40.1.69:6379
+[QISKIT] Ray nodes      : 25
+[QISKIT] Ray CPUs       : 1200
+[QISKIT] Connection time: 1.178 s
+[QISKIT] ======================================================================
+ray connect complete
+[QISKIT] Qubit sweep           : [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+[QISKIT] Run actual (uncut)    : False
+[QISKIT] Qubits/subcircuit     : 10
+[QISKIT] Monte Carlo samples   : 10000
+[QISKIT] Output directory      : results/run_20261006_114617
+[QISKIT] [N=10] ========================================
+[QISKIT] [N=10] starting run: 10 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=10] build_circuit             :      0.002 s
+[QISKIT] [N=10] transpile                 :      0.047 s
+[QISKIT] [N=10] circuit: 17 qubits, depth 191, 243 ops, 96 cx
+[QISKIT] [N=10] actual (uncut) run disabled
+[QISKIT] [N=10] gurobi_partition          :      0.039 s
+[QISKIT] [N=10] partition: 2 fragments, 8 cut gates (gap 0)
+[QISKIT] [N=10] cut_circuit               :      0.010 s
+[QISKIT] [N=10] cutting: 2 subcircuits, 8 cuts, log10(gamma)=3.82
+[QISKIT] [N=10] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=10] generate_experiments      :     38.114 s
+[QISKIT] [N=10] experiments: 19936 circuits (monte_carlo, 9968 weights)
+[QISKIT] Submitted 19936 circuits as 3988 Ray tasks (chunk size 5, 1200 CPUs)
+[QISKIT] [N=10] ray_execution             :    134.605 s
+[QISKIT] [N=10] reconstruction            :   1382.010 s
+[QISKIT] [N=10] reconstructed <Z^n> = 0.0283072
+[QISKIT] [N=10] total                     :   1554.832 s
+[QISKIT] [N=12] ========================================
+[QISKIT] [N=12] starting run: 12 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=12] build_circuit             :      0.010 s
+[QISKIT] [N=12] transpile                 :      0.029 s
+[QISKIT] [N=12] circuit: 21 qubits, depth 239, 303 ops, 120 cx
+[QISKIT] [N=12] actual (uncut) run disabled
+[QISKIT] [N=12] gurobi_partition          :      0.063 s
+[QISKIT] [N=12] partition: 3 fragments, 12 cut gates (gap 0)
+[QISKIT] [N=12] cut_circuit               :      0.014 s
+[QISKIT] [N=12] cutting: 3 subcircuits, 12 cuts, log10(gamma)=5.73
+[QISKIT] [N=12] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=12] generate_experiments      :     51.900 s
+[QISKIT] [N=12] experiments: 30000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 30000 circuits as 4287 Ray tasks (chunk size 7, 1200 CPUs)
+[QISKIT] [N=12] ray_execution             :    239.662 s
+[QISKIT] [N=12] reconstruction            :   2092.424 s
+[QISKIT] [N=12] reconstructed <Z^n> = 0.08165
+[QISKIT] [N=12] total                     :   2384.109 s
+[QISKIT] [N=14] ========================================
+[QISKIT] [N=14] starting run: 14 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=14] build_circuit             :      0.010 s
+[QISKIT] [N=14] transpile                 :      0.029 s
+[QISKIT] [N=14] circuit: 25 qubits, depth 287, 363 ops, 144 cx
+[QISKIT] [N=14] actual (uncut) run disabled
+[QISKIT] [N=14] gurobi_partition          :      0.094 s
+[QISKIT] [N=14] partition: 3 fragments, 16 cut gates (gap 0)
+[QISKIT] [N=14] cut_circuit               :      0.016 s
+[QISKIT] [N=14] cutting: 3 subcircuits, 16 cuts, log10(gamma)=7.63
+[QISKIT] [N=14] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=14] generate_experiments      :     64.056 s
+[QISKIT] [N=14] experiments: 30000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 30000 circuits as 4287 Ray tasks (chunk size 7, 1200 CPUs)
+[QISKIT] [N=14] ray_execution             :    191.509 s
+[QISKIT] [N=14] reconstruction            :   2092.256 s
+[QISKIT] [N=14] reconstructed <Z^n> = -5.7793
+[QISKIT] [N=14] total                     :   2347.978 s
+[QISKIT] [N=16] ========================================
+[QISKIT] [N=16] starting run: 16 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=16] build_circuit             :      0.010 s
+[QISKIT] [N=16] transpile                 :      0.028 s
+[QISKIT] [N=16] circuit: 29 qubits, depth 335, 423 ops, 168 cx
+[QISKIT] [N=16] actual (uncut) run disabled
+[QISKIT] [N=16] gurobi_partition          :      0.094 s
+[QISKIT] [N=16] partition: 3 fragments, 16 cut gates (gap 0)
+[QISKIT] [N=16] cut_circuit               :      0.017 s
+[QISKIT] [N=16] cutting: 3 subcircuits, 16 cuts, log10(gamma)=7.63
+[QISKIT] [N=16] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=16] generate_experiments      :     69.207 s
+[QISKIT] [N=16] experiments: 30000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 30000 circuits as 4287 Ray tasks (chunk size 7, 1200 CPUs)
+[QISKIT] [N=16] ray_execution             :    278.204 s
+[QISKIT] [N=16] reconstruction            :   2071.290 s
+[QISKIT] [N=16] reconstructed <Z^n> = 1.94415
+[QISKIT] [N=16] total                     :   2418.859 s
+[QISKIT] [N=18] ========================================
+[QISKIT] [N=18] starting run: 18 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=18] build_circuit             :      0.010 s
+[QISKIT] [N=18] transpile                 :      0.031 s
+[QISKIT] [N=18] circuit: 33 qubits, depth 383, 483 ops, 192 cx
+[QISKIT] [N=18] actual (uncut) run disabled
+[QISKIT] [N=18] gurobi_partition          :      0.196 s
+[QISKIT] [N=18] partition: 4 fragments, 24 cut gates (gap 0)
+[QISKIT] [N=18] cut_circuit               :      0.021 s
+[QISKIT] [N=18] cutting: 4 subcircuits, 24 cuts, log10(gamma)=11.45
+[QISKIT] [N=18] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=18] generate_experiments      :     89.017 s
+[QISKIT] [N=18] experiments: 40000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 40000 circuits as 4448 Ray tasks (chunk size 9, 1200 CPUs)
+[QISKIT] [N=18] ray_execution             :    271.404 s
+[QISKIT] [N=18] reconstruction            :   2773.130 s
+[QISKIT] [N=18] reconstructed <Z^n> = -345.615
+[QISKIT] [N=18] total                     :   3133.822 s
+[QISKIT] [N=20] ========================================
+[QISKIT] [N=20] starting run: 20 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=20] build_circuit             :      0.010 s
+[QISKIT] [N=20] transpile                 :      0.031 s
+[QISKIT] [N=20] circuit: 37 qubits, depth 431, 543 ops, 216 cx
+[QISKIT] [N=20] actual (uncut) run disabled
+[QISKIT] [N=20] gurobi_partition          :      0.248 s
+[QISKIT] [N=20] partition: 4 fragments, 24 cut gates (gap 0)
+[QISKIT] [N=20] cut_circuit               :      0.023 s
+[QISKIT] [N=20] cutting: 4 subcircuits, 24 cuts, log10(gamma)=11.45
+[QISKIT] [N=20] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=20] generate_experiments      :     95.086 s
+[QISKIT] [N=20] experiments: 40000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 40000 circuits as 4448 Ray tasks (chunk size 9, 1200 CPUs)
+[QISKIT] [N=20] ray_execution             :    291.509 s
+[QISKIT] [N=20] reconstruction            :   2785.241 s
+[QISKIT] [N=20] reconstructed <Z^n> = -348.093
+[QISKIT] [N=20] total                     :   3172.164 s
+[QISKIT] [N=22] ========================================
+[QISKIT] [N=22] starting run: 22 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=22] build_circuit             :      0.010 s
+[QISKIT] [N=22] transpile                 :      0.031 s
+[QISKIT] [N=22] circuit: 41 qubits, depth 479, 603 ops, 240 cx
+[QISKIT] [N=22] actual (uncut) run disabled
+[QISKIT] [N=22] gurobi_partition          :      0.442 s
+[QISKIT] [N=22] partition: 5 fragments, 28 cut gates (gap 0)
+[QISKIT] [N=22] cut_circuit               :      0.026 s
+[QISKIT] [N=22] cutting: 5 subcircuits, 28 cuts, log10(gamma)=13.36
+[QISKIT] [N=22] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=22] generate_experiments      :    108.596 s
+[QISKIT] [N=22] experiments: 50000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 50000 circuits as 4550 Ray tasks (chunk size 11, 1200 CPUs)
+[QISKIT] [N=22] ray_execution             :    488.233 s
+[QISKIT] [N=22] reconstruction            :   3481.253 s
+[QISKIT] [N=22] reconstructed <Z^n> = 1280.85
+[QISKIT] [N=22] total                     :   4078.612 s
+[QISKIT] [N=24] ========================================
+[QISKIT] [N=24] starting run: 24 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=24] build_circuit             :      0.011 s
+[QISKIT] [N=24] transpile                 :      0.034 s
+[QISKIT] [N=24] circuit: 45 qubits, depth 527, 663 ops, 264 cx
+[QISKIT] [N=24] actual (uncut) run disabled
+[QISKIT] [N=24] gurobi_partition          :      0.844 s
+[QISKIT] [N=24] partition: 5 fragments, 32 cut gates (gap 0)
+[QISKIT] [N=24] cut_circuit               :      0.029 s
+[QISKIT] [N=24] cutting: 5 subcircuits, 32 cuts, log10(gamma)=15.27
+[QISKIT] [N=24] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=24] generate_experiments      :    120.780 s
+[QISKIT] [N=24] experiments: 50000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 50000 circuits as 4550 Ray tasks (chunk size 11, 1200 CPUs)
+[QISKIT] [N=24] ray_execution             :    424.337 s
+[QISKIT] [N=24] reconstruction            :   3462.801 s
+[QISKIT] [N=24] reconstructed <Z^n> = -112448
+[QISKIT] [N=24] total                     :   4008.865 s
+[QISKIT] [N=26] ========================================
+[QISKIT] [N=26] starting run: 26 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=26] build_circuit             :      0.010 s
+[QISKIT] [N=26] transpile                 :      0.032 s
+[QISKIT] [N=26] circuit: 49 qubits, depth 575, 723 ops, 288 cx
+[QISKIT] [N=26] actual (uncut) run disabled
+[QISKIT] [N=26] gurobi_partition          :      1.531 s
+[QISKIT] [N=26] partition: 5 fragments, 32 cut gates (gap 0)
+[QISKIT] [N=26] cut_circuit               :      0.029 s
+[QISKIT] [N=26] cutting: 5 subcircuits, 32 cuts, log10(gamma)=15.27
+[QISKIT] [N=26] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=26] generate_experiments      :    125.866 s
+[QISKIT] [N=26] experiments: 50000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 50000 circuits as 4550 Ray tasks (chunk size 11, 1200 CPUs)
+[QISKIT] [N=26] ray_execution             :    522.701 s
+[QISKIT] [N=26] reconstruction            :   3451.095 s
+[QISKIT] [N=26] reconstructed <Z^n> = -30386.4
+[QISKIT] [N=26] total                     :   4101.300 s
+[QISKIT] [N=28] ========================================
+[QISKIT] [N=28] starting run: 28 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=28] build_circuit             :      0.010 s
+[QISKIT] [N=28] transpile                 :      0.034 s
+[QISKIT] [N=28] circuit: 53 qubits, depth 623, 783 ops, 312 cx
+[QISKIT] [N=28] actual (uncut) run disabled
+[QISKIT] [N=28] gurobi_partition          :      6.205 s
+[QISKIT] [N=28] partition: 6 fragments, 40 cut gates (gap 0)
+[QISKIT] [N=28] cut_circuit               :      0.034 s
+[QISKIT] [N=28] cutting: 6 subcircuits, 40 cuts, log10(gamma)=19.08
+[QISKIT] [N=28] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=28] generate_experiments      :    146.316 s
+[QISKIT] [N=28] experiments: 60000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 60000 circuits as 4620 Ray tasks (chunk size 13, 1200 CPUs)
+[QISKIT] [N=28] ray_execution             :    507.409 s
+[QISKIT] [N=28] reconstruction            :   4154.298 s
+[QISKIT] [N=28] reconstructed <Z^n> = 8.56041e+06
+[QISKIT] [N=28] total                     :   4814.355 s
+[QISKIT] [N=30] ========================================
+[QISKIT] [N=30] starting run: 30 data qubits, max 10 qubits/subcircuit
+[QISKIT] [N=30] build_circuit             :      0.010 s
+[QISKIT] [N=30] transpile                 :      0.035 s
+[QISKIT] [N=30] circuit: 57 qubits, depth 671, 843 ops, 336 cx
+[QISKIT] [N=30] actual (uncut) run disabled
+[QISKIT] [N=30] gurobi_partition          :      6.265 s
+[QISKIT] [N=30] partition: 6 fragments, 40 cut gates (gap 0)
+[QISKIT] [N=30] cut_circuit               :      0.037 s
+[QISKIT] [N=30] cutting: 6 subcircuits, 40 cuts, log10(gamma)=19.08
+[QISKIT] [N=30] WARNING: gamma exceeds 1000; the reconstructed value will have very large variance.
+[QISKIT] [N=30] generate_experiments      :    152.218 s
+[QISKIT] [N=30] experiments: 60000 circuits (monte_carlo, 10000 weights)
+[QISKIT] Submitted 60000 circuits as 4620 Ray tasks (chunk size 13, 1200 CPUs)
+[QISKIT] [N=30] ray_execution             :    546.469 s
+[QISKIT] [N=30] reconstruction            :   4157.750 s
+[QISKIT] [N=30] reconstructed <Z^n> = -1.89205e+06
+[QISKIT] [N=30] total                     :   4862.796 s
+
+================================================================================================
+SUMMARY
+================================================================================================
+   N       status     actual    cutting    abs_err  subckt   cuts  log10g   subexp      ray    total
+  10           ok        nan    0.02831        nan       2      8     3.8    19936   134.61  1554.83
+  12           ok        nan    0.08165        nan       3     12     5.7    30000   239.66  2384.11
+  14           ok        nan   -5.77930        nan       3     16     7.6    30000   191.51  2347.98
+  16           ok        nan    1.94415        nan       3     16     7.6    30000   278.20  2418.86
+  18           ok        nan -345.61491        nan       4     24    11.5    40000   271.40  3133.82
+  20           ok        nan -348.09282        nan       4     24    11.5    40000   291.51  3172.16
+  22           ok        nan 1280.85245        nan       5     28    13.4    50000   488.23  4078.61
+  24           ok        nan -112448.25477        nan       5     32    15.3    50000   424.34  4008.87
+  26           ok        nan -30386.43463        nan       5     32    15.3    50000   522.70  4101.30
+  28           ok        nan 8560409.92707        nan       6     40    19.1    60000   507.41  4814.36
+  30           ok        nan -1892046.64929        nan       6     40    19.1    60000   546.47  4862.80
+================================================================================================
+Whole sweep time : 36880.61 s
+Results saved in : results/run_20261006_114617
+  metrics.csv / metrics.npy / artifacts/n<N>.npz / config.json
+================================================================================================
+==========================================
+Stopping Ray cluster
+==========================================
+2026-10-06 22:01:12,376	VINFO scripts.py:1421 -- Send termination request to `/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet --raylet_socket_name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/raylet --store_socket_name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/plasma_store --object_manager_port=0 --min_worker_port=10002 --max_worker_port=19999 --node_manager_port=0 --node_id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15 --node_ip_address=172.40.1.69 --maximum_startup_concurrency=48 --static_resource_list=node:172.40.1.69,1.0,node:__internal_head__,1.0,CPU,48,memory,134585843303,object_store_memory,57679647129 "--python_worker_command=/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/_private/workers/setup_worker.py /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/_private/workers/default_worker.py --node-ip-address=172.40.1.69 --node-manager-port=RAY_NODE_MANAGER_PORT_PLACEHOLDER --object-store-name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/plasma_store --raylet-name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/raylet --redis-address=None --metrics-agent-port=0 --logging-rotate-bytes=536870912 --logging-rotate-backup-count=5 --runtime-env-agent-port=0 --gcs-address=172.40.1.69:6379 --session-name=session_2026-10-06_11-45-44_728103_1497785 --temp-dir=/tmp/ray --webui= --cluster-id=ac8b80bc6dd7cdbaee96cd95f80e167f7dbdd06ef5bd207a3c30298f RAY_WORKER_DYNAMIC_OPTION_PLACEHOLDER" "--java_worker_command=/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/_private/workers/setup_worker.py -Dray.address=172.40.1.69:6379 -Dray.raylet.node-manager-port=RAY_NODE_MANAGER_PORT_PLACEHOLDER -Dray.object-store.socket-name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/plasma_store -Dray.raylet.socket-name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/raylet -Dray.redis.username= -Dray.redis.password= -Dray.node-ip=172.40.1.69 -Dray.home=/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/../.. -Dray.logging.dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs -Dray.session-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 RAY_WORKER_DYNAMIC_OPTION_PLACEHOLDER io.ray.runtime.runner.worker.DefaultWorker" --cpp_worker_command= --native_library_path=/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/cpp/lib --temp_dir=/tmp/ray --session_dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --log_dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --resource_dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/runtime_resources --metrics-agent-port=0 --metrics_export_port=0 --runtime_env_agent_port=0 --object_store_memory=57679647129 --plasma_directory=/dev/shm --fallback_directory=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --ray-debugger-external=0 --gcs-address=172.40.1.69:6379 --session-name=session_2026-10-06_11-45-44_728103_1497785 --labels= --cluster-id=ac8b80bc6dd7cdbaee96cd95f80e167f7dbdd06ef5bd207a3c30298f --stdout_filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/raylet.out --stderr_filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/raylet.err --head --num_prestart_python_workers=48 "--dashboard_agent_command=/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python -u /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/dashboard/agent.py --node-id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15 --node-ip-address=172.40.1.69 --metrics-export-port=0 --grpc-port=0 --listen-port=52365 --node-manager-port=RAY_NODE_MANAGER_PORT_PLACEHOLDER --object-store-name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/plasma_store --raylet-name=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/sockets/raylet --temp-dir=/tmp/ray --session-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --log-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --logging-rotate-bytes=536870912 --logging-rotate-backup-count=5 --session-name=session_2026-10-06_11-45-44_728103_1497785 --gcs-address=172.40.1.69:6379 --cluster-id-hex=ac8b80bc6dd7cdbaee96cd95f80e167f7dbdd06ef5bd207a3c30298f --stdout-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/dashboard_agent.out --stderr-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/dashboard_agent.err --logging-filename=dashboard_agent.log --minimal --head" "--runtime_env_agent_command=/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python -u /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/_private/runtime_env/agent/main.py --node-id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15 --node-ip-address=172.40.1.69 --runtime-env-agent-port=0 --session-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --gcs-address=172.40.1.69:6379 --cluster-id-hex=ac8b80bc6dd7cdbaee96cd95f80e167f7dbdd06ef5bd207a3c30298f --runtime-env-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/runtime_resources --logging-rotate-bytes=536870912 --logging-rotate-backup-count=5 --log-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --temp-dir=/tmp/ray --stdout-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/runtime_env_agent.out --stderr-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/runtime_env_agent.err --logging-filename=runtime_env_agent.log" --node-name=172.40.1.69` (via SIGTERM)
+2026-10-06 22:01:12,829	INFO scripts.py:1451 -- 1/1 stopped.2026-10-06 22:01:12,900	VINFO scripts.py:1421 -- Send termination request to `/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python -u /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/autoscaler/_private/monitor.py --logs-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --logging-rotate-bytes=536870912 --logging-rotate-backup-count=5 --gcs-address=172.40.1.69:6379 --stdout-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/monitor.out --stderr-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/monitor.err --monitor-ip=172.40.1.69` (via SIGTERM)
+2026-10-06 22:01:12,900	VINFO scripts.py:1421 -- Send termination request to `/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python -u /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/_private/log_monitor.py --session-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --logs-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --gcs-address=172.40.1.69:6379 --node-ip-address=172.40.1.69 --logging-rotate-bytes=536870912 --logging-rotate-backup-count=5 --stdout-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/log_monitor.out --stderr-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/log_monitor.err` (via SIGTERM)
+2026-10-06 22:01:12,905	VINFO scripts.py:1421 -- Send termination request to `/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python -u /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/_private/log_monitor.py --session-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --logs-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --gcs-address=172.40.1.69:6379 --node-ip-address=172.40.1.69 --logging-rotate-bytes=536870912 --logging-rotate-backup-count=5 --stdout-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/log_monitor.out --stderr-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/log_monitor.err` (via SIGTERM)
+2026-10-06 22:01:12,907	VINFO scripts.py:1421 -- Send termination request to `/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/bin/python /home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/dashboard/dashboard.py --host=127.0.0.1 --port=8265 --port-retries=0 --temp-dir=/tmp/ray --log-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --session-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --logging-rotate-bytes=536870912 --logging-rotate-backup-count=5 --gcs-address=172.40.1.69:6379 --cluster-id-hex=ac8b80bc6dd7cdbaee96cd95f80e167f7dbdd06ef5bd207a3c30298f --node-ip-address=172.40.1.69 --proxy-server-url= --stdout-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/dashboard.out --stderr-filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/dashboard.err --minimal` (via SIGTERM)
+2026-10-06 22:01:13,826	INFO scripts.py:1451 -- 1/3 stopped.2026-10-06 22:01:13,826	INFO scripts.py:1451 -- 2/3 stopped.2026-10-06 22:01:13,826	INFO scripts.py:1451 -- 3/3 stopped.2026-10-06 22:01:13,895	VINFO scripts.py:1421 -- Send termination request to `/home/cdacB/santhoshj/anaconda3/envs/qiskit_dist/lib/python3.12/site-packages/ray/core/src/ray/gcs/gcs_server --log_dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs --config_list=eyJhdXRvbWF0aWNfb2JqZWN0X3NwaWxsaW5nX2VuYWJsZWQiOiB0cnVlLCAib2JqZWN0X3NwaWxsaW5nX2NvbmZpZyI6ICJ7XCJ0eXBlXCI6IFwiZmlsZXN5c3RlbVwiLCBcInBhcmFtc1wiOiB7XCJkaXJlY3RvcnlfcGF0aFwiOiBcIi90bXAvcmF5L3Nlc3Npb25fMjAyNi0xMC0wNl8xMS00NS00NF83MjgxMDNfMTQ5Nzc4NVwifX0iLCAiaXNfZXh0ZXJuYWxfc3RvcmFnZV90eXBlX2ZzIjogdHJ1ZX0= --gcs_server_port=6379 --metrics-agent-port=0 --node-ip-address=172.40.1.69 --session-name=session_2026-10-06_11-45-44_728103_1497785 --ray-commit=dd83c3a703a5422d0b47f142cb380c6330817608 --session-dir=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785 --node-id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15 --stdout_filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/gcs_server.out --stderr_filepath=/tmp/ray/session_2026-10-06_11-45-44_728103_1497785/logs/gcs_server.err` (via SIGTERM)
+2026-10-06 22:01:19,825	WARN scripts.py:1498 -- Stopped only 4 out of 5 Ray processes within the grace period 16 seconds. Set `-v` to see more details. Remaining processes [psutil.Process(pid=1497787, name='gcs_server', status='terminated')] will be forcefully terminated.
+2026-10-06 22:01:19,825	WARN scripts.py:1505 -- You can also use `--force` to forcefully terminate processes or set higher `--grace-period` to wait longer time for proper termination.
+2026-10-06 22:01:19,808	ERR scripts.py:1307 -- Some Ray subprocesses exited unexpectedly:
+2026-10-06 22:01:19,808	ERR scripts.py:87 -- gcs_server [exit code=-9]
+2026-10-06 22:01:19,809	ERR scripts.py:115 -- ----- BEGIN gcs_server.out tail (exit code(s)=-9 (signal 9)) -----
+2026-10-06 22:01:19,827	ERR scripts.py:122 -- 
+[2026-10-06 22:00:45,816 I 1497787 1497787] (gcs_server) gcs_server.cc:1099: Main service Event stats:
+
+
+Global stats: 1528523 total (2 active)
+Queueing time: mean = 0.01ms, max = 198.09ms, min = 0.00ms, total = 20334.07ms
+Execution time:  mean = 0.01ms, total = 13317.48ms
+Event stats:
+	GcsResourceLoadPuller.apply - 921709 total (0 active), Execution time: mean = 0.00ms, total = 2831.90ms, Queueing time: mean = 0.01ms, max = 4.50ms, min = 0.00ms, total = 9315.32ms
+	HealthCheck - 290898 total (0 active), Execution time: mean = 0.00ms, total = 315.64ms, Queueing time: mean = 0.01ms, max = 0.80ms, min = 0.00ms, total = 2283.19ms
+	GcsResourceManager::Update - 93850 total (0 active), Execution time: mean = 0.02ms, total = 1883.28ms, Queueing time: mean = 0.03ms, max = 11.89ms, min = 0.00ms, total = 2814.38ms
+	GcsHealthCheckManager::MarkNodeHealthy - 93850 total (0 active), Execution time: mean = 0.00ms, total = 66.91ms, Queueing time: mean = 0.03ms, max = 11.88ms, min = 0.00ms, total = 2848.64ms
+	GcsInMemoryStore.Put - 45707 total (0 active), Execution time: mean = 0.01ms, total = 305.26ms, Queueing time: mean = 0.05ms, max = 198.09ms, min = 0.00ms, total = 2264.17ms
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 32.56ms, Queueing time: mean = 0.01ms, max = 1.70ms, min = 0.00ms, total = 346.79ms
+	GCSServer.deadline_timer.metrics_report - 7380 total (1 active), Execution time: mean = 0.09ms, total = 696.26ms, Queueing time: mean = 0.01ms, max = 2.54ms, min = 0.00ms, total = 81.23ms
+	NodeResourceInfoGcsService.grpc_server.GetAllResourceUsage - 7371 total (0 active), Execution time: mean = 0.29ms, total = 2131.78ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	NodeResourceInfoGcsService.grpc_server.GetAllResourceUsage.HandleRequestImpl - 7371 total (0 active), Execution time: mean = 0.14ms, total = 1028.74ms, Queueing time: mean = 0.01ms, max = 0.84ms, min = 0.00ms, total = 69.78ms
+	AutoscalerStateService.grpc_server.GetClusterResourceState.HandleRequestImpl - 7371 total (0 active), Execution time: mean = 0.09ms, total = 691.69ms, Queueing time: mean = 0.01ms, max = 0.68ms, min = 0.00ms, total = 52.51ms
+	AutoscalerStateService.grpc_server.GetClusterResourceState - 7371 total (0 active), Execution time: mean = 0.23ms, total = 1667.60ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 20.55ms, Queueing time: mean = 0.01ms, max = 15.54ms, min = 0.00ms, total = 26.97ms
+	GcsInMemoryStore.Get - 1424 total (0 active), Execution time: mean = 0.02ms, total = 32.92ms, Queueing time: mean = 0.07ms, max = 1.41ms, min = 0.00ms, total = 101.85ms
+	WorkerInfoGcsService.grpc_server.AddWorkerInfo.HandleRequestImpl - 1312 total (0 active), Execution time: mean = 0.01ms, total = 18.87ms, Queueing time: mean = 0.07ms, max = 2.91ms, min = 0.00ms, total = 95.63ms
+	WorkerInfoGcsService.grpc_server.AddWorkerInfo - 1312 total (0 active), Execution time: mean = 0.33ms, total = 432.99ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	GCSServer.deadline_timer.debug_state_event_stats_print - 615 total (1 active, 1 running), Execution time: mean = 1.24ms, total = 760.50ms, Queueing time: mean = 0.01ms, max = 0.05ms, min = 0.00ms, total = 5.05ms
+	WorkerInfoGcsService.grpc_server.ReportWorkerFailure.HandleRequestImpl - 111 total (0 active), Execution time: mean = 0.04ms, total = 4.80ms, Queueing time: mean = 0.21ms, max = 1.81ms, min = 0.00ms, total = 23.36ms
+	WorkerInfoGcsService.grpc_server.ReportWorkerFailure - 111 total (0 active), Execution time: mean = 1.27ms, total = 140.62ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	GcsInMemoryStore.GetAll - 42 total (0 active), Execution time: mean = 0.35ms, total = 14.68ms, Queueing time: mean = 0.09ms, max = 0.75ms, min = 0.00ms, total = 3.66ms
+	JobInfoGcsService.grpc_server.GetAllJobInfo - 36 total (0 active), Execution time: mean = 0.57ms, total = 20.46ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	JobInfoGcsService.grpc_server.GetAllJobInfo.HandleRequestImpl - 36 total (0 active), Execution time: mean = 0.06ms, total = 2.08ms, Queueing time: mean = 0.01ms, max = 0.05ms, min = 0.00ms, total = 0.36ms
+	GcsHealthCheckManager::AddNode - 25 total (0 active), Execution time: mean = 0.00ms, total = 0.09ms, Queueing time: mean = 0.00ms, max = 0.00ms, min = 0.00ms, total = 0.01ms
+	NodeManager.AddNodeCallback - 25 total (0 active), Execution time: mean = 0.36ms, total = 8.95ms, Queueing time: mean = 0.01ms, max = 0.15ms, min = 0.00ms, total = 0.29ms
+	PeriodicalRunner.RunFnPeriodically - 2 total (0 active), Execution time: mean = 1.03ms, total = 2.06ms, Queueing time: mean = 0.42ms, max = 0.77ms, min = 0.06ms, total = 0.83ms
+	JobInfoGcsService.grpc_server.AddJob - 1 total (0 active), Execution time: mean = 0.73ms, total = 0.73ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	GcsInMemoryStore.GetNextJobID - 1 total (0 active), Execution time: mean = 0.00ms, total = 0.00ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+	JobInfoGcsService.grpc_server.GetNextJobID - 1 total (0 active), Execution time: mean = 0.14ms, total = 0.14ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	NodeResourceInfoGcsService.grpc_server.GetAllTotalResources - 1 total (0 active), Execution time: mean = 0.18ms, total = 0.18ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	JobInfoGcsService.grpc_server.AddJob.HandleRequestImpl - 1 total (0 active), Execution time: mean = 0.10ms, total = 0.10ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+	GcsServer.GetOrGenerateClusterId.continuation - 1 total (0 active), Execution time: mean = 204.92ms, total = 204.92ms, Queueing time: mean = 0.00ms, max = 0.00ms, min = 0.00ms, total = 0.00ms
+	GcsInitData::AsyncLoad - 1 total (0 active), Execution time: mean = 0.14ms, total = 0.14ms, Queueing time: mean = 0.00ms, max = 0.00ms, min = 0.00ms, total = 0.00ms
+	JobInfoGcsService.grpc_server.GetNextJobID.HandleRequestImpl - 1 total (0 active), Execution time: mean = 0.01ms, total = 0.01ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+	NodeResourceInfoGcsService.grpc_server.GetAllTotalResources.HandleRequestImpl - 1 total (0 active), Execution time: mean = 0.08ms, total = 0.08ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+
+
+[2026-10-06 22:00:45,816 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: task_io_context Event stats:
+
+
+Global stats: 185015 total (1 active)
+Queueing time: mean = 0.01ms, max = 8.03ms, min = -0.86ms, total = 1300.73ms
+Execution time:  mean = 0.06ms, total = 10300.76ms
+Event stats:
+	TaskInfoGcsService.grpc_server.AddTaskEventData - 68524 total (0 active), Execution time: mean = 0.12ms, total = 8540.58ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	TaskInfoGcsService.grpc_server.AddTaskEventData.HandleRequestImpl - 68524 total (0 active), Execution time: mean = 0.02ms, total = 1661.99ms, Queueing time: mean = 0.01ms, max = 3.20ms, min = 0.00ms, total = 874.85ms
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 33.55ms, Queueing time: mean = 0.01ms, max = 0.37ms, min = 0.00ms, total = 334.64ms
+	GcsTaskManager.GcJobSummary - 7381 total (1 active), Execution time: mean = 0.01ms, total = 38.19ms, Queueing time: mean = 0.01ms, max = 8.03ms, min = -0.86ms, total = 78.25ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 26.24ms, Queueing time: mean = 0.00ms, max = 2.31ms, min = 0.00ms, total = 12.98ms
+	PeriodicalRunner.RunFnPeriodically - 1 total (0 active), Execution time: mean = 0.21ms, total = 0.21ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+
+
+[2026-10-06 22:00:45,816 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: pubsub_io_context Event stats:
+
+
+Global stats: 49043 total (27 active)
+Queueing time: mean = 0.03ms, max = 2.25ms, min = 0.00ms, total = 1476.71ms
+Execution time:  mean = 19550.08ms, total = 958794637.44ms
+Event stats:
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 33.34ms, Queueing time: mean = 0.01ms, max = 0.21ms, min = 0.00ms, total = 344.60ms
+	ControlPlanePubSubGcsService.grpc_server.GcsSubscriberPoll - 4060 total (26 active), Execution time: mean = 236156.28ms, total = 958794510.82ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	ControlPlanePubSubGcsService.grpc_server.GcsSubscriberPoll.HandleRequestImpl - 4060 total (0 active), Execution time: mean = 0.01ms, total = 51.78ms, Queueing time: mean = 0.26ms, max = 2.19ms, min = 0.00ms, total = 1061.15ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 29.35ms, Queueing time: mean = 0.00ms, max = 1.40ms, min = 0.00ms, total = 11.59ms
+	Publisher.CheckDeadSubscribers - 124 total (1 active), Execution time: mean = 0.05ms, total = 5.88ms, Queueing time: mean = 0.01ms, max = 0.02ms, min = 0.01ms, total = 1.33ms
+	RemoveSubscriberFrom - 111 total (0 active), Execution time: mean = 0.00ms, total = 0.06ms, Queueing time: mean = 0.52ms, max = 2.25ms, min = 0.01ms, total = 57.34ms
+	ControlPlanePubSubGcsService.grpc_server.GcsSubscriberCommandBatch - 51 total (0 active), Execution time: mean = 0.09ms, total = 4.80ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	ControlPlanePubSubGcsService.grpc_server.GcsSubscriberCommandBatch.HandleRequestImpl - 51 total (0 active), Execution time: mean = 0.01ms, total = 0.75ms, Queueing time: mean = 0.01ms, max = 0.18ms, min = 0.00ms, total = 0.69ms
+	PeriodicalRunner.RunFnPeriodically - 1 total (0 active), Execution time: mean = 0.67ms, total = 0.67ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+
+
+[2026-10-06 22:00:45,816 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: observability_pubsub_io_context Event stats:
+
+
+Global stats: 71105 total (3 active)
+Queueing time: mean = 0.01ms, max = 3.16ms, min = 0.00ms, total = 493.11ms
+Execution time:  mean = 1035.92ms, total = 73659417.99ms
+Event stats:
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 32.39ms, Queueing time: mean = 0.01ms, max = 1.27ms, min = 0.00ms, total = 331.60ms
+	ObservabilityPubSubService.grpc_server.GcsSubscriberPoll - 7613 total (2 active), Execution time: mean = 9675.29ms, total = 73658009.83ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	ObservabilityPubSubService.grpc_server.GcsSubscriberPoll.HandleRequestImpl - 7613 total (0 active), Execution time: mean = 0.02ms, total = 134.41ms, Queueing time: mean = 0.01ms, max = 0.05ms, min = 0.00ms, total = 67.08ms
+	ObservabilityPubSubService.grpc_server.GcsPublish - 7527 total (0 active), Execution time: mean = 0.13ms, total = 973.52ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	ObservabilityPubSubService.grpc_server.GcsPublish.HandleRequestImpl - 7527 total (0 active), Execution time: mean = 0.03ms, total = 237.94ms, Queueing time: mean = 0.01ms, max = 0.07ms, min = 0.00ms, total = 76.06ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 26.97ms, Queueing time: mean = 0.00ms, max = 3.16ms, min = 0.00ms, total = 14.79ms
+	Publisher.CheckDeadSubscribers - 124 total (1 active), Execution time: mean = 0.02ms, total = 1.92ms, Queueing time: mean = 0.01ms, max = 0.03ms, min = 0.00ms, total = 1.26ms
+	RemoveSubscriberFrom - 111 total (0 active), Execution time: mean = 0.00ms, total = 0.06ms, Queueing time: mean = 0.02ms, max = 0.16ms, min = 0.00ms, total = 2.29ms
+	ObservabilityPubSubService.grpc_server.GcsSubscriberCommandBatch.HandleRequestImpl - 2 total (0 active), Execution time: mean = 0.03ms, total = 0.05ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.02ms
+	ObservabilityPubSubService.grpc_server.GcsSubscriberCommandBatch - 2 total (0 active), Execution time: mean = 0.12ms, total = 0.23ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	PeriodicalRunner.RunFnPeriodically - 1 total (0 active), Execution time: mean = 0.66ms, total = 0.66ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+
+
+[2026-10-06 22:00:45,816 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: ray_syncer_io_context Event stats:
+
+
+Global stats: 2477943 total (0 active)
+Queueing time: mean = 0.21ms, max = 16.36ms, min = 0.00ms, total = 531327.28ms
+Execution time:  mean = 0.03ms, total = 70820.07ms
+Event stats:
+	 - 2343506 total (0 active), Execution time: mean = 0.02ms, total = 38205.36ms, Queueing time: mean = 0.23ms, max = 16.36ms, min = 0.00ms, total = 530976.17ms
+	RaySyncer.BroadcastMessage - 93850 total (0 active), Execution time: mean = 0.35ms, total = 32543.28ms, Queueing time: mean = 0.00ms, max = 0.07ms, min = 0.00ms, total = 17.36ms
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 30.78ms, Queueing time: mean = 0.01ms, max = 1.23ms, min = 0.00ms, total = 321.51ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 40.65ms, Queueing time: mean = 0.00ms, max = 3.59ms, min = 0.00ms, total = 12.21ms
+	RaySyncerRegister - 2 total (0 active), Execution time: mean = 0.00ms, total = 0.00ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.02ms
+
+
+[2026-10-06 22:00:45,816 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: ray_event_io_context Event stats:
+
+
+Global stats: 40585 total (0 active)
+Queueing time: mean = 0.01ms, max = 1.33ms, min = 0.00ms, total = 343.34ms
+Execution time:  mean = 0.00ms, total = 59.56ms
+Event stats:
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 31.80ms, Queueing time: mean = 0.01ms, max = 0.18ms, min = 0.00ms, total = 331.70ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 27.76ms, Queueing time: mean = 0.00ms, max = 1.33ms, min = 0.00ms, total = 11.64ms
+
+
+[2026-10-06 22:00:45,817 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: internal_kv_io_context Event stats:
+
+
+Global stats: 119307 total (0 active)
+Queueing time: mean = 0.01ms, max = 3.20ms, min = 0.00ms, total = 1127.35ms
+Execution time:  mean = 0.03ms, total = 4123.81ms
+Event stats:
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 30.81ms, Queueing time: mean = 0.01ms, max = 0.18ms, min = 0.00ms, total = 331.84ms
+	InternalKVGcsService.grpc_server.InternalKVPut.HandleRequestImpl - 14827 total (0 active), Execution time: mean = 0.02ms, total = 224.51ms, Queueing time: mean = 0.01ms, max = 0.20ms, min = 0.00ms, total = 109.92ms
+	GcsInMemoryStore.Put - 14827 total (0 active), Execution time: mean = 0.00ms, total = 72.48ms, Queueing time: mean = 0.01ms, max = 0.29ms, min = 0.00ms, total = 99.30ms
+	InternalKVGcsService.grpc_server.InternalKVPut - 14827 total (0 active), Execution time: mean = 0.11ms, total = 1562.75ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	InternalKVGcsService.grpc_server.InternalKVGet.HandleRequestImpl - 11335 total (0 active), Execution time: mean = 0.03ms, total = 300.05ms, Queueing time: mean = 0.02ms, max = 3.14ms, min = 0.00ms, total = 269.61ms
+	InternalKVGcsService.grpc_server.InternalKVGet - 11335 total (0 active), Execution time: mean = 0.16ms, total = 1786.43ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	GcsInMemoryStore.Get - 11335 total (0 active), Execution time: mean = 0.01ms, total = 96.29ms, Queueing time: mean = 0.03ms, max = 3.20ms, min = 0.00ms, total = 304.04ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 29.76ms, Queueing time: mean = 0.00ms, max = 1.37ms, min = 0.00ms, total = 11.41ms
+	InternalKVGcsService.grpc_server.GetInternalConfig - 49 total (0 active), Execution time: mean = 0.08ms, total = 3.94ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	InternalKVGcsService.grpc_server.GetInternalConfig.HandleRequestImpl - 49 total (0 active), Execution time: mean = 0.01ms, total = 0.67ms, Queueing time: mean = 0.01ms, max = 0.04ms, min = 0.00ms, total = 0.44ms
+	InternalKVGcsService.grpc_server.InternalKVKeys.HandleRequestImpl - 33 total (0 active), Execution time: mean = 0.06ms, total = 1.82ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.00ms, total = 0.21ms
+	InternalKVGcsService.grpc_server.InternalKVKeys - 33 total (0 active), Execution time: mean = 0.29ms, total = 9.66ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	GcsInMemoryStore.Keys - 33 total (0 active), Execution time: mean = 0.01ms, total = 0.33ms, Queueing time: mean = 0.01ms, max = 0.18ms, min = 0.00ms, total = 0.40ms
+	GcsInMemoryStore.GetAll - 11 total (0 active), Execution time: mean = 0.02ms, total = 0.19ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.08ms
+	InternalKVGcsService.grpc_server.InternalKVMultiGet.HandleRequestImpl - 11 total (0 active), Execution time: mean = 0.03ms, total = 0.36ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.00ms, total = 0.06ms
+	InternalKVGcsService.grpc_server.InternalKVMultiGet - 11 total (0 active), Execution time: mean = 0.29ms, total = 3.21ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	InternalKVGcsService.grpc_server.InternalKVExists - 1 total (0 active), Execution time: mean = 0.14ms, total = 0.14ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	InternalKVGcsService.grpc_server.InternalKVDel.HandleRequestImpl - 1 total (0 active), Execution time: mean = 0.03ms, total = 0.03ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+	GcsInMemoryStore.Delete - 1 total (0 active), Execution time: mean = 0.21ms, total = 0.21ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+	InternalKVGcsService.grpc_server.InternalKVDel - 1 total (0 active), Execution time: mean = 0.15ms, total = 0.15ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	InternalKVGcsService.grpc_server.InternalKVExists.HandleRequestImpl - 1 total (0 active), Execution time: mean = 0.03ms, total = 0.03ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+	GcsInMemoryStore.Exists - 1 total (0 active), Execution time: mean = 0.01ms, total = 0.01ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+
+
+[2026-10-06 22:00:45,817 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: node_manager_io_context Event stats:
+
+
+Global stats: 91784 total (0 active)
+Queueing time: mean = 0.01ms, max = 1.38ms, min = 0.00ms, total = 573.23ms
+Execution time:  mean = 0.03ms, total = 2652.68ms
+Event stats:
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 32.89ms, Queueing time: mean = 0.01ms, max = 0.18ms, min = 0.00ms, total = 338.18ms
+	NodeInfoGcsService.grpc_server.CheckAlive.HandleRequestImpl - 22747 total (0 active), Execution time: mean = 0.01ms, total = 172.36ms, Queueing time: mean = 0.01ms, max = 1.25ms, min = 0.00ms, total = 199.67ms
+	NodeInfoGcsService.grpc_server.CheckAlive - 22747 total (0 active), Execution time: mean = 0.09ms, total = 2144.54ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 30.37ms, Queueing time: mean = 0.00ms, max = 1.38ms, min = 0.00ms, total = 12.09ms
+	NodeInfoGcsService.grpc_server.GetAllNodeInfo - 1399 total (0 active), Execution time: mean = 0.09ms, total = 120.80ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	NodeInfoGcsService.grpc_server.GetAllNodeInfo.HandleRequestImpl - 1399 total (0 active), Execution time: mean = 0.01ms, total = 16.28ms, Queueing time: mean = 0.01ms, max = 0.08ms, min = 0.00ms, total = 9.88ms
+	NodeInfoGcsService.grpc_server.GetClusterId - 1390 total (0 active), Execution time: mean = 0.08ms, total = 110.88ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	NodeInfoGcsService.grpc_server.GetClusterId.HandleRequestImpl - 1390 total (0 active), Execution time: mean = 0.00ms, total = 5.79ms, Queueing time: mean = 0.01ms, max = 0.11ms, min = 0.00ms, total = 11.47ms
+	NodeInfoGcsService.grpc_server.GetAllNodeAddressAndLiveness - 26 total (0 active), Execution time: mean = 0.10ms, total = 2.65ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	NodeInfoGcsService.grpc_server.GetAllNodeAddressAndLiveness.HandleRequestImpl - 26 total (0 active), Execution time: mean = 0.01ms, total = 0.38ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.00ms, total = 0.17ms
+	NodeInfoGcsService.grpc_server.RegisterNode - 25 total (0 active), Execution time: mean = 0.45ms, total = 11.20ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	GcsInMemoryStore.Put - 25 total (0 active), Execution time: mean = 0.11ms, total = 2.63ms, Queueing time: mean = 0.05ms, max = 0.25ms, min = 0.01ms, total = 1.17ms
+	NodeInfoGcsService.grpc_server.RegisterNode.HandleRequestImpl - 25 total (0 active), Execution time: mean = 0.08ms, total = 1.91ms, Queueing time: mean = 0.02ms, max = 0.22ms, min = 0.00ms, total = 0.60ms
+
+
+[2026-10-06 22:00:45,817 I 1497787 1497787] (gcs_server) gcs_server.cc:1103: resource_load_pull_io_context Event stats:
+
+
+Global stats: 1920884 total (1 active)
+Queueing time: mean = 0.16ms, max = 5.12ms, min = -0.24ms, total = 315314.24ms
+Execution time:  mean = 0.20ms, total = 393766.58ms
+Event stats:
+	NodeManagerService.grpc_client.GetResourceLoad - 921709 total (0 active), Execution time: mean = 0.39ms, total = 359064.62ms, Queueing time: mean = 0.00ms, max = -0.00ms, min = 9223372036854.78ms, total = 0.00ms
+	NodeManagerService.grpc_client.GetResourceLoad.OnReplyReceived - 921709 total (0 active), Execution time: mean = 0.01ms, total = 13751.22ms, Queueing time: mean = 0.34ms, max = 2.29ms, min = 0.00ms, total = 314577.58ms
+	io_context_monitor_probe - 36893 total (0 active), Execution time: mean = 0.00ms, total = 31.81ms, Queueing time: mean = 0.01ms, max = 1.39ms, min = 0.00ms, total = 332.88ms
+	RayletLoadPulled - 36880 total (1 active), Execution time: mean = 0.57ms, total = 20894.44ms, Queueing time: mean = 0.01ms, max = 5.12ms, min = -0.24ms, total = 392.56ms
+	event_loop_lag_probe - 3692 total (0 active), Execution time: mean = 0.01ms, total = 24.31ms, Queueing time: mean = 0.00ms, max = 1.35ms, min = 0.00ms, total = 11.21ms
+	PeriodicalRunner.RunFnPeriodically - 1 total (0 active), Execution time: mean = 0.18ms, total = 0.18ms, Queueing time: mean = 0.01ms, max = 0.01ms, min = 0.01ms, total = 0.01ms
+
+
+[2026-10-06 22:00:57,942 I 1497787 1497787] (gcs_server) gcs_job_manager.cc:156: Marking job as finished. job_id=01000000
+[2026-10-06 22:01:12,380 I 1497787 1497816] (gcs_server) gcs_node_manager.cc:178: HandleUnregisterNode() for node node_id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15 grpc_peer=ipv4:172.40.1.69:54158
+[2026-10-06 22:01:12,380 I 1497787 1497816] (gcs_server) gcs_node_manager.cc:656: , death reason = EXPECTED_TERMINATION, death message = received SIGTERM node_id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15 node_name=172.40.1.69
+[2026-10-06 22:01:12,381 I 1497787 1497787] (gcs_server) gcs_placement_group_manager.cc:691: Node is dead, rescheduling the placement groups on the dead node. node_id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15
+[2026-10-06 22:01:12,381 I 1497787 1497787] (gcs_server) gcs_job_manager.cc:480: Node is dead, marking all jobs with drivers on this node as finished. node_id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15
+[2026-10-06 22:01:12,706 I 1497787 1497813] (gcs_server) ray_syncer_bidi_reactor_base.h:243: Failed to read a message from node: 1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15
+[2026-10-06 22:01:12,706 I 1497787 1497813] (gcs_server) ray_syncer.cc:254: Connection is broken. node_id=1c0f8c71e796244e77f2233be8ec08e8a0c420f6311799372a281c15
+[2026-10-06 22:01:12,942 I 1497787 1497810] (gcs_server) gcs_task_manager.cc:764: Marking all running tasks of job 01000000 as failed.
+[2026-10-06 22:01:13,895 I 1497787 1497787] (gcs_server) gcs_server_main.cc:247: GCS server received SIGTERM, shutting down...
+[2026-10-06 22:01:13,896 I 1497787 1497787] (gcs_server) gcs_server.cc:395: Stopping GCS server.
+[2026-10-06 22:01:13,896 I 1497787 1497787] (gcs_server) ray_event_recorder_base.cc:69: Stopping RayEventRecorder and flushing remaining events.
+
+2026-10-06 22:01:19,828	ERR scripts.py:128 -- ----- END gcs_server.out tail (exit code(s)=-9 (signal 9)) -----
+2026-10-06 22:01:19,828	ERR scripts.py:1315 -- Remaining processes will be killed.
+Execution Complete!!!

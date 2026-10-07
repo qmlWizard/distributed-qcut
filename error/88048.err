@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/home/cdacB/santhoshj/digvijay/distributed-qcut/compare_mpi_qiskit.py", line 8, in <module>
+    from qiskit_aer import AerSimulator
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/__init__.py", line 69, in <module>
+    from qiskit_aer.aerprovider import AerProvider
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/aerprovider.py", line 20, in <module>
+    from .backends.aer_simulator import AerSimulator
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/backends/__init__.py", line 17, in <module>
+    from .aer_simulator import AerSimulator
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/backends/aer_simulator.py", line 24, in <module>
+    from .aerbackend import AerBackend, AerError
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/backends/aerbackend.py", line 33, in <module>
+    from ..noise.noise_model import NoiseModel, QuantumErrorLocation
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/noise/__init__.py", line 241, in <module>
+    from .noise_model import NoiseModel
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/noise/noise_model.py", line 38, in <module>
+    from ..backends.backend_utils import BASIS_GATES
+  File "/home/cdacB/santhoshj/anaconda3/envs/Qiskit-build-1.1.1/lib/python3.11/site-packages/qiskit_aer/backends/backend_utils.py", line 30, in <module>
+    from .controller_wrappers import aer_initialize_libraries
+ImportError: libmpi.so.40: cannot open shared object file: No such file or directory
+srun: error: cbcn0050: task 0: Exited with exit code 1
+srun: Terminating StepId=88048.0

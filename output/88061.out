@@ -1,0 +1,56 @@
+==========================================
+SLURM_CLUSTER_NAME = rudra20pf-hpc
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = cdac
+SLURM_JOB_ID = 88061
+SLURM_JOB_NAME = qasmbench-benchmark
+SLURM_JOB_NODELIST = cbcn0050
+SLURM_JOB_USER = santhoshj
+SLURM_JOB_UID = 80040
+SLURM_JOB_PARTITION = debug
+SLURM_TASK_PID = 1641976
+SLURM_SUBMIT_DIR = /home/cdacB/santhoshj/digvijay/distributed-qcut
+SLURM_CPUS_ON_NODE = 48
+SLURM_NTASKS = 1
+SLURM_TASK_PID = 1641976
+==========================================
+
+Checking MPI...
+mpirun:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpirun
+mpirun (Open MPI) 4.1.8
+
+Report bugs to http://www.open-mpi.org/community/help/
+
+mpicc:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicc
+gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+mpicxx:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicxx
+g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+==========================================
+JOB ID:          88061
+JOB NAME:        qasmbench-benchmark
+NODES:           1
+TASKS:           1
+CPUS/TASK:       48
+TOTAL CPUS:      48
+NODE LIST:
+cbcn0050
+==========================================
+==================================================
+ RUNS WITHOUT MPI COMPLETE
+==================================================

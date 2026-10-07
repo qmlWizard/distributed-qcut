@@ -1,0 +1,6 @@
+qiskit
+qiskit-aer
+qiskit-addons-cutting
+matplotlib
+tqdm
+ray

@@ -1,0 +1,148 @@
+==========================================
+SLURM_CLUSTER_NAME = rudra20pf-hpc
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = cdac
+SLURM_JOB_ID = 88063
+SLURM_JOB_NAME = qasmbench-benchmark
+SLURM_JOB_NODELIST = cbcn[0065-0068],cbhm[0003-0009,0077-0082,0099-0106,0113-0119]
+SLURM_JOB_USER = santhoshj
+SLURM_JOB_UID = 80040
+SLURM_JOB_PARTITION = terai
+SLURM_TASK_PID = 1587291
+SLURM_SUBMIT_DIR = /home/cdacB/santhoshj/digvijay/distributed-qcut
+SLURM_CPUS_ON_NODE = 48
+SLURM_NTASKS = 32
+SLURM_TASK_PID = 1587291
+==========================================
+
+Checking MPI...
+mpirun:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpirun
+mpirun (Open MPI) 4.1.8
+
+Report bugs to http://www.open-mpi.org/community/help/
+
+mpicc:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicc
+gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+mpicxx:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicxx
+g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+==========================================
+JOB ID:          88063
+JOB NAME:        qasmbench-benchmark
+NODES:           32
+TASKS:           32
+CPUS/TASK:       48
+TOTAL CPUS:      1536
+NODE LIST:
+cbcn0065
+cbcn0066
+cbcn0067
+cbcn0068
+cbhm0003
+cbhm0004
+cbhm0005
+cbhm0006
+cbhm0007
+cbhm0008
+cbhm0009
+cbhm0077
+cbhm0078
+cbhm0079
+cbhm0080
+cbhm0081
+cbhm0082
+cbhm0099
+cbhm0100
+cbhm0101
+cbhm0102
+cbhm0103
+cbhm0104
+cbhm0105
+cbhm0106
+cbhm0113
+cbhm0114
+cbhm0115
+cbhm0116
+cbhm0117
+cbhm0118
+cbhm0119
+==========================================
+Loading: circuits/bchmrk_data/medium/bigadder_n18/bigadder_n18.qasm
+Loading: circuits/bchmrk_data/medium/bv_n14/bv_n14.qasm
+Loading: circuits/bchmrk_data/medium/bv_n19/bv_n19.qasm
+Loading: circuits/bchmrk_data/medium/bwt_n21/bwt_n21.qasm
+Loading: circuits/bchmrk_data/medium/cat_state_n22/cat_state_n22.qasm
+Loading: circuits/bchmrk_data/medium/cc_n12/cc_n12.qasm
+Loading: circuits/bchmrk_data/medium/dnn_n16/dnn_n16.qasm
+Loading: circuits/bchmrk_data/medium/factor247_n15/factor247_n15.qasm
+Loading: circuits/bchmrk_data/medium/gcm_n13/gcm_h6.qasm
+Loading: circuits/bchmrk_data/medium/ghz_state_n23/ghz_state_n23.qasm
+Loading: circuits/bchmrk_data/medium/hhl_n14/hhl_n14.qasm
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Loading: circuits/bchmrk_data/medium/ising_n26/ising_n26.qasm
+Loading: circuits/bchmrk_data/medium/knn_n25/knn_n25.qasm
+Loading: circuits/bchmrk_data/medium/multiplier_n15/multiplier_n15.qasm
+Loading: circuits/bchmrk_data/medium/multiply_n13/multiply_n13.qasm
+Loading: circuits/bchmrk_data/medium/qec9xz_n17/qec9xz_n17.qasm
+Loading: circuits/bchmrk_data/medium/qf21_n15/qf21_n15.qasm
+Loading: circuits/bchmrk_data/medium/qft_n18/qft_n18.qasm
+Loading: circuits/bchmrk_data/medium/qram_n20/qram_n20.qasm
+Loading: circuits/bchmrk_data/medium/sat_n11/sat_n11.qasm
+Loading: circuits/bchmrk_data/medium/seca_n11/seca_n11.qasm
+Loading: circuits/bchmrk_data/medium/square_root_n18/square_root_n18.qasm
+Loading: circuits/bchmrk_data/medium/swap_test_n25/swap_test_n25.qasm
+Loading: circuits/bchmrk_data/medium/vqe_n24/vqe_n24.qasm
+Loading: circuits/bchmrk_data/medium/wstate_n27/wstate_n27.qasm
+Running: bigadder_n18
+  -> error: AerError: 'unknown instruction: add4'  time=s
+Running: bv_n14
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+Failed to load hhl_n14.qasm: QASM3ImporterError: '2,0: non-stdgates imports not currently supported'
+  -> ok  time=48.955282s
+Running: bv_n19
+  -> ok  time=0.646628s
+Running: bwt_n21

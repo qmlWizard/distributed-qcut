@@ -1,0 +1,820 @@
+==========================================
+SLURM_CLUSTER_NAME = rudra20pf-hpc
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = cdac
+SLURM_JOB_ID = 87973
+SLURM_JOB_NAME = grover-40q
+SLURM_JOB_NODELIST = cbcn[0153-0158,0202-0220,0356-0376,0531-0549,0701-0715,0768-0793,0999-1014,1163-1176,1251-1266,1580-1595,1597-1611,1768-1800,1867-1879,2019-2032,2254-2266]
+SLURM_JOB_USER = santhoshj
+SLURM_JOB_UID = 80040
+SLURM_JOB_PARTITION = shiwalik
+SLURM_TASK_PID = 1539499
+SLURM_SUBMIT_DIR = /home/cdacB/santhoshj/digvijay/distributed-qcut
+SLURM_CPUS_ON_NODE = 48
+SLURM_NTASKS = 256
+SLURM_TASK_PID = 1539499
+==========================================
+
+[3/8] Checking MPI...
+mpirun:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpirun
+mpirun (Open MPI) 4.1.8
+
+Report bugs to http://www.open-mpi.org/community/help/
+
+mpicc:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicc
+gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+mpicxx:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicxx
+g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+==========================================
+JOB ID:          87973
+JOB NAME:        grover-40q
+NODES:           256
+TASKS:           256
+CPUS/TASK:       48
+TOTAL CPUS:      12288
+NODE LIST:
+cbcn0153
+cbcn0154
+cbcn0155
+cbcn0156
+cbcn0157
+cbcn0158
+cbcn0202
+cbcn0203
+cbcn0204
+cbcn0205
+cbcn0206
+cbcn0207
+cbcn0208
+cbcn0209
+cbcn0210
+cbcn0211
+cbcn0212
+cbcn0213
+cbcn0214
+cbcn0215
+cbcn0216
+cbcn0217
+cbcn0218
+cbcn0219
+cbcn0220
+cbcn0356
+cbcn0357
+cbcn0358
+cbcn0359
+cbcn0360
+cbcn0361
+cbcn0362
+cbcn0363
+cbcn0364
+cbcn0365
+cbcn0366
+cbcn0367
+cbcn0368
+cbcn0369
+cbcn0370
+cbcn0371
+cbcn0372
+cbcn0373
+cbcn0374
+cbcn0375
+cbcn0376
+cbcn0531
+cbcn0532
+cbcn0533
+cbcn0534
+cbcn0535
+cbcn0536
+cbcn0537
+cbcn0538
+cbcn0539
+cbcn0540
+cbcn0541
+cbcn0542
+cbcn0543
+cbcn0544
+cbcn0545
+cbcn0546
+cbcn0547
+cbcn0548
+cbcn0549
+cbcn0701
+cbcn0702
+cbcn0703
+cbcn0704
+cbcn0705
+cbcn0706
+cbcn0707
+cbcn0708
+cbcn0709
+cbcn0710
+cbcn0711
+cbcn0712
+cbcn0713
+cbcn0714
+cbcn0715
+cbcn0768
+cbcn0769
+cbcn0770
+cbcn0771
+cbcn0772
+cbcn0773
+cbcn0774
+cbcn0775
+cbcn0776
+cbcn0777
+cbcn0778
+cbcn0779
+cbcn0780
+cbcn0781
+cbcn0782
+cbcn0783
+cbcn0784
+cbcn0785
+cbcn0786
+cbcn0787
+cbcn0788
+cbcn0789
+cbcn0790
+cbcn0791
+cbcn0792
+cbcn0793
+cbcn0999
+cbcn1000
+cbcn1001
+cbcn1002
+cbcn1003
+cbcn1004
+cbcn1005
+cbcn1006
+cbcn1007
+cbcn1008
+cbcn1009
+cbcn1010
+cbcn1011
+cbcn1012
+cbcn1013
+cbcn1014
+cbcn1163
+cbcn1164
+cbcn1165
+cbcn1166
+cbcn1167
+cbcn1168
+cbcn1169
+cbcn1170
+cbcn1171
+cbcn1172
+cbcn1173
+cbcn1174
+cbcn1175
+cbcn1176
+cbcn1251
+cbcn1252
+cbcn1253
+cbcn1254
+cbcn1255
+cbcn1256
+cbcn1257
+cbcn1258
+cbcn1259
+cbcn1260
+cbcn1261
+cbcn1262
+cbcn1263
+cbcn1264
+cbcn1265
+cbcn1266
+cbcn1580
+cbcn1581
+cbcn1582
+cbcn1583
+cbcn1584
+cbcn1585
+cbcn1586
+cbcn1587
+cbcn1588
+cbcn1589
+cbcn1590
+cbcn1591
+cbcn1592
+cbcn1593
+cbcn1594
+cbcn1595
+cbcn1597
+cbcn1598
+cbcn1599
+cbcn1600
+cbcn1601
+cbcn1602
+cbcn1603
+cbcn1604
+cbcn1605
+cbcn1606
+cbcn1607
+cbcn1608
+cbcn1609
+cbcn1610
+cbcn1611
+cbcn1768
+cbcn1769
+cbcn1770
+cbcn1771
+cbcn1772
+cbcn1773
+cbcn1774
+cbcn1775
+cbcn1776
+cbcn1777
+cbcn1778
+cbcn1779
+cbcn1780
+cbcn1781
+cbcn1782
+cbcn1783
+cbcn1784
+cbcn1785
+cbcn1786
+cbcn1787
+cbcn1788
+cbcn1789
+cbcn1790
+cbcn1791
+cbcn1792
+cbcn1793
+cbcn1794
+cbcn1795
+cbcn1796
+cbcn1797
+cbcn1798
+cbcn1799
+cbcn1800
+cbcn1867
+cbcn1868
+cbcn1869
+cbcn1870
+cbcn1871
+cbcn1872
+cbcn1873
+cbcn1874
+cbcn1875
+cbcn1876
+cbcn1877
+cbcn1878
+cbcn1879
+cbcn2019
+cbcn2020
+cbcn2021
+cbcn2022
+cbcn2023
+cbcn2024
+cbcn2025
+cbcn2026
+cbcn2027
+cbcn2028
+cbcn2029
+cbcn2030
+cbcn2031
+cbcn2032
+cbcn2254
+cbcn2255
+cbcn2256
+cbcn2257
+cbcn2258
+cbcn2259
+cbcn2260
+cbcn2261
+cbcn2262
+cbcn2263
+cbcn2264
+cbcn2265
+cbcn2266
+==========================================
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Inside the code
+Inside the code
+Grover Circuit Created. Running on Backend
+Inside the code
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend
+Grover Circuit Created. Running on Backend

@@ -1,0 +1,697 @@
+{
+  "min_qubits": 16,
+  "max_qubits": 20,
+  "step": 2,
+  "qubits_per_subcircuit": 10,
+  "samples": 10000,
+  "enumerate_below": 10000,
+  "max_gamma": 1000,
+  "skip_high_gamma": false,
+  "shots": 16384,
+  "iterations": 1,
+  "gurobi_time_limit": 300,
+  "gurobi_mip_gap": 0.0,
+  "task_multiplier": 4,
+  "output_dir": "results",
+  "ray_address": "172.40.1.175:6379",
+  "ray_nodes": [
+    {
+      "NodeID": "2d68d89e10915077b5702a45cca9b014bc158876b6a973b8a3fdc681",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.125",
+      "NodeManagerHostname": "cbcn0887",
+      "NodeManagerPort": 39751,
+      "ObjectManagerPort": 41551,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.125",
+      "RuntimeEnvAgentPort": 35233,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.4.125": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57906959155.0,
+        "memory": 135116238029.0
+      },
+      "Labels": {
+        "ray.io/node-id": "2d68d89e10915077b5702a45cca9b014bc158876b6a973b8a3fdc681"
+      }
+    },
+    {
+      "NodeID": "353059dddae32a46e6ef1a1f1dd5072b41bbc9f1968b6e7a4529cdf2",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.122",
+      "NodeManagerHostname": "cbcn0884",
+      "NodeManagerPort": 40111,
+      "ObjectManagerPort": 33035,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.122",
+      "RuntimeEnvAgentPort": 36933,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.4.122": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57922829107.0,
+        "memory": 135153267917.0
+      },
+      "Labels": {
+        "ray.io/node-id": "353059dddae32a46e6ef1a1f1dd5072b41bbc9f1968b6e7a4529cdf2"
+      }
+    },
+    {
+      "NodeID": "18fb0f5ee1b8f6358a8352136ab56657ce20b6101cc1bc616ad351e1",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.129",
+      "NodeManagerHostname": "cbcn0891",
+      "NodeManagerPort": 42527,
+      "ObjectManagerPort": 33539,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.129",
+      "RuntimeEnvAgentPort": 45571,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.4.129": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57907492454.0,
+        "memory": 135117482394.0
+      },
+      "Labels": {
+        "ray.io/node-id": "18fb0f5ee1b8f6358a8352136ab56657ce20b6101cc1bc616ad351e1"
+      }
+    },
+    {
+      "NodeID": "243a08f5ba45b8f9cf20a844019d8cbde665eb91b71bca8fafddb224",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.176",
+      "NodeManagerHostname": "cbcn0176",
+      "NodeManagerPort": 39235,
+      "ObjectManagerPort": 35195,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.176",
+      "RuntimeEnvAgentPort": 44311,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.1.176": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57993504768.0,
+        "memory": 135318177792.0
+      },
+      "Labels": {
+        "ray.io/node-id": "243a08f5ba45b8f9cf20a844019d8cbde665eb91b71bca8fafddb224"
+      }
+    },
+    {
+      "NodeID": "1dbdf273c298240ce395b0dc7279f28e139ecbd07ae8f431fa2a1f62",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.132",
+      "NodeManagerHostname": "cbcn0894",
+      "NodeManagerPort": 43661,
+      "ObjectManagerPort": 42891,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.132",
+      "RuntimeEnvAgentPort": 36373,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.4.132": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57922020556.0,
+        "memory": 135151381300.0
+      },
+      "Labels": {
+        "ray.io/node-id": "1dbdf273c298240ce395b0dc7279f28e139ecbd07ae8f431fa2a1f62"
+      }
+    },
+    {
+      "NodeID": "20b60b812fd266d0f77c4bacd7e7812482e791103209848b3a6901a0",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.137",
+      "NodeManagerHostname": "cbcn0899",
+      "NodeManagerPort": 39179,
+      "ObjectManagerPort": 45003,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.137",
+      "RuntimeEnvAgentPort": 40861,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.137": 1.0,
+        "object_store_memory": 57908573798.0,
+        "memory": 135120005530.0
+      },
+      "Labels": {
+        "ray.io/node-id": "20b60b812fd266d0f77c4bacd7e7812482e791103209848b3a6901a0"
+      }
+    },
+    {
+      "NodeID": "bbfba1234ed031dce541c61ad5e0c591528db36a53220d1559d35c5a",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.177",
+      "NodeManagerHostname": "cbcn0177",
+      "NodeManagerPort": 39739,
+      "ObjectManagerPort": 37493,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.177",
+      "RuntimeEnvAgentPort": 33137,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.1.177": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57976397414.0,
+        "memory": 135278260634.0
+      },
+      "Labels": {
+        "ray.io/node-id": "bbfba1234ed031dce541c61ad5e0c591528db36a53220d1559d35c5a"
+      }
+    },
+    {
+      "NodeID": "5c6c595f7e4879476d9ae2cfc135cb0e7de846907c2bf2feee1b5b8d",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.123",
+      "NodeManagerHostname": "cbcn0885",
+      "NodeManagerPort": 35029,
+      "ObjectManagerPort": 38393,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.123",
+      "RuntimeEnvAgentPort": 44069,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.4.123": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57910222848.0,
+        "memory": 135123853312.0
+      },
+      "Labels": {
+        "ray.io/node-id": "5c6c595f7e4879476d9ae2cfc135cb0e7de846907c2bf2feee1b5b8d"
+      }
+    },
+    {
+      "NodeID": "759456b2608a35f60c5dc1cf70b2e19b173a66f6e979c4e05bbb47d5",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.130",
+      "NodeManagerHostname": "cbcn0892",
+      "NodeManagerPort": 42121,
+      "ObjectManagerPort": 38357,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.130",
+      "RuntimeEnvAgentPort": 46617,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.4.130": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57912901632.0,
+        "memory": 135130103808.0
+      },
+      "Labels": {
+        "ray.io/node-id": "759456b2608a35f60c5dc1cf70b2e19b173a66f6e979c4e05bbb47d5"
+      }
+    },
+    {
+      "NodeID": "e4121775058e2ae858fbc0cfbf060762cb0981cf15ecf79f30d53b5e",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.128",
+      "NodeManagerHostname": "cbcn0890",
+      "NodeManagerPort": 35221,
+      "ObjectManagerPort": 37905,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.128",
+      "RuntimeEnvAgentPort": 38179,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.128": 1.0,
+        "object_store_memory": 57917320396.0,
+        "memory": 135140414260.0
+      },
+      "Labels": {
+        "ray.io/node-id": "e4121775058e2ae858fbc0cfbf060762cb0981cf15ecf79f30d53b5e"
+      }
+    },
+    {
+      "NodeID": "e8016b9c5f675ceb4c7b2a330aecf9212f34a088853e75a1a082518f",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.131",
+      "NodeManagerHostname": "cbcn0893",
+      "NodeManagerPort": 43085,
+      "ObjectManagerPort": 33853,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.131",
+      "RuntimeEnvAgentPort": 36567,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.131": 1.0,
+        "object_store_memory": 57898140057.0,
+        "memory": 135095660135.0
+      },
+      "Labels": {
+        "ray.io/node-id": "e8016b9c5f675ceb4c7b2a330aecf9212f34a088853e75a1a082518f"
+      }
+    },
+    {
+      "NodeID": "925f7b1505f17d50f534d0fd4fd4fbc4b84c1b280648c7e1a5503b0d",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.179",
+      "NodeManagerHostname": "cbcn0179",
+      "NodeManagerPort": 33675,
+      "ObjectManagerPort": 37549,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.179",
+      "RuntimeEnvAgentPort": 40261,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.1.179": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57978358579.0,
+        "memory": 135282836685.0
+      },
+      "Labels": {
+        "ray.io/node-id": "925f7b1505f17d50f534d0fd4fd4fbc4b84c1b280648c7e1a5503b0d"
+      }
+    },
+    {
+      "NodeID": "ecef193d5119a4f41d6a2a3c5989f6bba5a7aa7b4e75b62b4c38e531",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.180",
+      "NodeManagerHostname": "cbcn0180",
+      "NodeManagerPort": 37843,
+      "ObjectManagerPort": 34343,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.180",
+      "RuntimeEnvAgentPort": 41519,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.1.180": 1.0,
+        "object_store_memory": 57973764096.0,
+        "memory": 135272116224.0
+      },
+      "Labels": {
+        "ray.io/node-id": "ecef193d5119a4f41d6a2a3c5989f6bba5a7aa7b4e75b62b4c38e531"
+      }
+    },
+    {
+      "NodeID": "87862daaf39c117544772044fe6feba930039f643b2ac48b468ec150",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.124",
+      "NodeManagerHostname": "cbcn0886",
+      "NodeManagerPort": 42869,
+      "ObjectManagerPort": 39817,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.124",
+      "RuntimeEnvAgentPort": 36857,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.124": 1.0,
+        "object_store_memory": 57917904076.0,
+        "memory": 135141776180.0
+      },
+      "Labels": {
+        "ray.io/node-id": "87862daaf39c117544772044fe6feba930039f643b2ac48b468ec150"
+      }
+    },
+    {
+      "NodeID": "d1136527bfda9401200efc4ffb0f35550325c57cada2a5b9ce7f15ba",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.134",
+      "NodeManagerHostname": "cbcn0896",
+      "NodeManagerPort": 39483,
+      "ObjectManagerPort": 38945,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.134",
+      "RuntimeEnvAgentPort": 33029,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.134": 1.0,
+        "object_store_memory": 57917438361.0,
+        "memory": 135140689511.0
+      },
+      "Labels": {
+        "ray.io/node-id": "d1136527bfda9401200efc4ffb0f35550325c57cada2a5b9ce7f15ba"
+      }
+    },
+    {
+      "NodeID": "f653e1bdc6699237c95f1005abdd2db3e8373fcfe78289cf03635f49",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.178",
+      "NodeManagerHostname": "cbcn0178",
+      "NodeManagerPort": 40399,
+      "ObjectManagerPort": 41131,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.178",
+      "RuntimeEnvAgentPort": 46127,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.1.178": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57990275481.0,
+        "memory": 135310642791.0
+      },
+      "Labels": {
+        "ray.io/node-id": "f653e1bdc6699237c95f1005abdd2db3e8373fcfe78289cf03635f49"
+      }
+    },
+    {
+      "NodeID": "e4aeb84cc34a5de59d041508732b844fd0abbac0c2f251389414533e",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.121",
+      "NodeManagerHostname": "cbcn0883",
+      "NodeManagerPort": 42691,
+      "ObjectManagerPort": 38029,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.121",
+      "RuntimeEnvAgentPort": 34785,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.4.121": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57925714329.0,
+        "memory": 135160000103.0
+      },
+      "Labels": {
+        "ray.io/node-id": "e4aeb84cc34a5de59d041508732b844fd0abbac0c2f251389414533e"
+      }
+    },
+    {
+      "NodeID": "cc5dfe0004b14bf6b88a26549ab7152ce5290df9bf20f33d674eb15f",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.136",
+      "NodeManagerHostname": "cbcn0898",
+      "NodeManagerPort": 36397,
+      "ObjectManagerPort": 45131,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.136",
+      "RuntimeEnvAgentPort": 43231,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.136": 1.0,
+        "object_store_memory": 57906452889.0,
+        "memory": 135115056743.0
+      },
+      "Labels": {
+        "ray.io/node-id": "cc5dfe0004b14bf6b88a26549ab7152ce5290df9bf20f33d674eb15f"
+      }
+    },
+    {
+      "NodeID": "f2ee7cd9c459e031a52ee4086427a59149c6e9d447129a4f16999cc7",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.181",
+      "NodeManagerHostname": "cbcn0181",
+      "NodeManagerPort": 43057,
+      "ObjectManagerPort": 33889,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.181",
+      "RuntimeEnvAgentPort": 44189,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.1.181": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57977761382.0,
+        "memory": 135281443226.0
+      },
+      "Labels": {
+        "ray.io/node-id": "f2ee7cd9c459e031a52ee4086427a59149c6e9d447129a4f16999cc7"
+      }
+    },
+    {
+      "NodeID": "9c7d0273d0a881b6a06b9c60277f9cdbca3abcd6d148527489e4d0fa",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.126",
+      "NodeManagerHostname": "cbcn0888",
+      "NodeManagerPort": 46471,
+      "ObjectManagerPort": 42449,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.126",
+      "RuntimeEnvAgentPort": 40513,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.126": 1.0,
+        "object_store_memory": 57921617510.0,
+        "memory": 135150440858.0
+      },
+      "Labels": {
+        "ray.io/node-id": "9c7d0273d0a881b6a06b9c60277f9cdbca3abcd6d148527489e4d0fa"
+      }
+    },
+    {
+      "NodeID": "026cb9f189f1c2e034180cd7b4b3351ce04c4ec6949d5ab0a683bfe9",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.175",
+      "NodeManagerHostname": "cbcn0175",
+      "NodeManagerPort": 41849,
+      "ObjectManagerPort": 44137,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.175",
+      "RuntimeEnvAgentPort": 44447,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:__internal_head__": 1.0,
+        "node:172.40.1.175": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57770244096.0,
+        "memory": 134797236224.0
+      },
+      "Labels": {
+        "ray.io/node-id": "026cb9f189f1c2e034180cd7b4b3351ce04c4ec6949d5ab0a683bfe9"
+      }
+    },
+    {
+      "NodeID": "af0e33566b0382e4e3ad689b35dbd567c39a8869ae9ed5dc7bc2182e",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.133",
+      "NodeManagerHostname": "cbcn0895",
+      "NodeManagerPort": 41777,
+      "ObjectManagerPort": 38491,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.133",
+      "RuntimeEnvAgentPort": 40703,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "object_store_memory": 57928255488.0,
+        "memory": 135165929472.0,
+        "node:172.40.4.133": 1.0
+      },
+      "Labels": {
+        "ray.io/node-id": "af0e33566b0382e4e3ad689b35dbd567c39a8869ae9ed5dc7bc2182e"
+      }
+    },
+    {
+      "NodeID": "c1f0ce0d9f39614d99e70a43d8160d1fef86eae682eecf20277ef679",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.135",
+      "NodeManagerHostname": "cbcn0897",
+      "NodeManagerPort": 43953,
+      "ObjectManagerPort": 38185,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.135",
+      "RuntimeEnvAgentPort": 44471,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.135": 1.0,
+        "object_store_memory": 57897735782.0,
+        "memory": 135094716826.0
+      },
+      "Labels": {
+        "ray.io/node-id": "c1f0ce0d9f39614d99e70a43d8160d1fef86eae682eecf20277ef679"
+      }
+    },
+    {
+      "NodeID": "a76d3fcbbb96ee026b986bc1127c0ab84fbdd77528af3fc3bb06e637",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.1.182",
+      "NodeManagerHostname": "cbcn0182",
+      "NodeManagerPort": 40103,
+      "ObjectManagerPort": 34331,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.1.182",
+      "RuntimeEnvAgentPort": 44427,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "node:172.40.1.182": 1.0,
+        "CPU": 48.0,
+        "object_store_memory": 57989237145.0,
+        "memory": 135308220007.0
+      },
+      "Labels": {
+        "ray.io/node-id": "a76d3fcbbb96ee026b986bc1127c0ab84fbdd77528af3fc3bb06e637"
+      }
+    },
+    {
+      "NodeID": "67154c01615a41ea06d8a87d80d02bdd44119a67019d10350e73806a",
+      "Alive": true,
+      "NodeManagerAddress": "172.40.4.127",
+      "NodeManagerHostname": "cbcn0889",
+      "NodeManagerPort": 43925,
+      "ObjectManagerPort": 46463,
+      "ObjectStoreSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/plasma_store",
+      "RayletSocketName": "/tmp/ray/session_2026-10-05_22-23-10_841635_1477990/sockets/raylet",
+      "MetricsExportPort": -1,
+      "MetricsAgentPort": -1,
+      "DashboardAgentListenPort": -1,
+      "NodeName": "172.40.4.127",
+      "RuntimeEnvAgentPort": 37617,
+      "DeathReason": 0,
+      "DeathReasonMessage": "",
+      "alive": true,
+      "Resources": {
+        "CPU": 48.0,
+        "node:172.40.4.127": 1.0,
+        "object_store_memory": 57905329766.0,
+        "memory": 135112436122.0
+      },
+      "Labels": {
+        "ray.io/node-id": "67154c01615a41ea06d8a87d80d02bdd44119a67019d10350e73806a"
+      }
+    }
+  ],
+  "ray_total_cpus": 1200,
+  "ray_init_time": 1.1676293739583343
+}

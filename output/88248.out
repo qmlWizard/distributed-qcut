@@ -1,0 +1,180 @@
+==========================================
+SLURM_CLUSTER_NAME = rudra20pf-hpc
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = cdac
+SLURM_JOB_ID = 88248
+SLURM_JOB_NAME = grover-40q
+SLURM_JOB_NODELIST = cbcn[0031-0032,0055-0059,0154,0157-0158,0165-0167,0284-0285,0287,0292,0324-0328,0386,0445-0448,0499,0555,0581-0584,0592,0595,0597,0620-0623,0628,0631,0636,0643-0644,0673,0701,0703-0704,0712-0715,0727,0732-0734,0736,0746,0750,0797-0798,0810-0812,0903,0914-0915,0973,0984,0992,1004-1005,1056,1074,1097-1098,1132-1133,1152,1164-1165,1175-1176,1251,1253-1254,1263-1264,1403,1584-1586,1640-1641,1768-1770,1918-1919,1992-1993,2019-2020,2028-2031,2095-2098,2123-2125,2236-2240,2254-2255,2257-2258,2263-2266]
+SLURM_JOB_USER = santhoshj
+SLURM_JOB_UID = 80040
+SLURM_JOB_PARTITION = shiwalik
+SLURM_TASK_PID = 1873507
+SLURM_SUBMIT_DIR = /home/cdacB/santhoshj/digvijay/distributed-qcut
+SLURM_CPUS_ON_NODE = 48
+SLURM_NTASKS = 128
+SLURM_TASK_PID = 1873507
+==========================================
+
+[3/8] Checking MPI...
+mpirun:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpirun
+mpirun (Open MPI) 4.1.8
+
+Report bugs to http://www.open-mpi.org/community/help/
+
+mpicc:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicc
+gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+mpicxx:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicxx
+g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+==========================================
+JOB ID:          88248
+JOB NAME:        grover-40q
+NODES:           128
+TASKS:           128
+CPUS/TASK:       48
+TOTAL CPUS:      6144
+NODE LIST:
+cbcn0031
+cbcn0032
+cbcn0055
+cbcn0056
+cbcn0057
+cbcn0058
+cbcn0059
+cbcn0154
+cbcn0157
+cbcn0158
+cbcn0165
+cbcn0166
+cbcn0167
+cbcn0284
+cbcn0285
+cbcn0287
+cbcn0292
+cbcn0324
+cbcn0325
+cbcn0326
+cbcn0327
+cbcn0328
+cbcn0386
+cbcn0445
+cbcn0446
+cbcn0447
+cbcn0448
+cbcn0499
+cbcn0555
+cbcn0581
+cbcn0582
+cbcn0583
+cbcn0584
+cbcn0592
+cbcn0595
+cbcn0597
+cbcn0620
+cbcn0621
+cbcn0622
+cbcn0623
+cbcn0628
+cbcn0631
+cbcn0636
+cbcn0643
+cbcn0644
+cbcn0673
+cbcn0701
+cbcn0703
+cbcn0704
+cbcn0712
+cbcn0713
+cbcn0714
+cbcn0715
+cbcn0727
+cbcn0732
+cbcn0733
+cbcn0734
+cbcn0736
+cbcn0746
+cbcn0750
+cbcn0797
+cbcn0798
+cbcn0810
+cbcn0811
+cbcn0812
+cbcn0903
+cbcn0914
+cbcn0915
+cbcn0973
+cbcn0984
+cbcn0992
+cbcn1004
+cbcn1005
+cbcn1056
+cbcn1074
+cbcn1097
+cbcn1098
+cbcn1132
+cbcn1133
+cbcn1152
+cbcn1164
+cbcn1165
+cbcn1175
+cbcn1176
+cbcn1251
+cbcn1253
+cbcn1254
+cbcn1263
+cbcn1264
+cbcn1403
+cbcn1584
+cbcn1585
+cbcn1586
+cbcn1640
+cbcn1641
+cbcn1768
+cbcn1769
+cbcn1770
+cbcn1918
+cbcn1919
+cbcn1992
+cbcn1993
+cbcn2019
+cbcn2020
+cbcn2028
+cbcn2029
+cbcn2030
+cbcn2031
+cbcn2095
+cbcn2096
+cbcn2097
+cbcn2098
+cbcn2123
+cbcn2124
+cbcn2125
+cbcn2236
+cbcn2237
+cbcn2238
+cbcn2239
+cbcn2240
+cbcn2254
+cbcn2255
+cbcn2257
+cbcn2258
+cbcn2263
+cbcn2264
+cbcn2265
+cbcn2266
+==========================================

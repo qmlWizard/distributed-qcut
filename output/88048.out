@@ -1,0 +1,33 @@
+==========================================
+SLURM_CLUSTER_NAME = rudra20pf-hpc
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = cdac
+SLURM_JOB_ID = 88048
+SLURM_JOB_NAME = qasmbench-benchmark
+SLURM_JOB_NODELIST = cbcn0050
+SLURM_JOB_USER = santhoshj
+SLURM_JOB_UID = 80040
+SLURM_JOB_PARTITION = debug
+SLURM_TASK_PID = 1639646
+SLURM_SUBMIT_DIR = /home/cdacB/santhoshj/digvijay/distributed-qcut
+SLURM_CPUS_ON_NODE = 48
+SLURM_NTASKS = 1
+SLURM_TASK_PID = 1639646
+==========================================
+==========================================
+JOB ID:          88048
+JOB NAME:        qasmbench-benchmark
+NODES:           1
+TASKS:           1
+CPUS/TASK:       48
+TOTAL CPUS:      48
+NODE LIST:
+cbcn0050
+==========================================
+==================================================
+ RUNS WITHOUT MPI COMPLETE
+==================================================

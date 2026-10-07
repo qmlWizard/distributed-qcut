@@ -1,0 +1,87 @@
+==========================================
+SLURM_CLUSTER_NAME = rudra20pf-hpc
+SLURM_ARRAY_JOB_ID = 
+SLURM_ARRAY_TASK_ID = 
+SLURM_ARRAY_TASK_COUNT = 
+SLURM_ARRAY_TASK_MAX = 
+SLURM_ARRAY_TASK_MIN = 
+SLURM_JOB_ACCOUNT = cdac
+SLURM_JOB_ID = 88045
+SLURM_JOB_NAME = qasmbench-benchmark
+SLURM_JOB_NODELIST = cbcn[0039-0040,0052-0060,0165-0173,1955-1966]
+SLURM_JOB_USER = santhoshj
+SLURM_JOB_UID = 80040
+SLURM_JOB_PARTITION = terai
+SLURM_TASK_PID = 1738950
+SLURM_SUBMIT_DIR = /home/cdacB/santhoshj/digvijay/distributed-qcut
+SLURM_CPUS_ON_NODE = 48
+SLURM_NTASKS = 32
+SLURM_TASK_PID = 1738950
+==========================================
+
+Checking MPI...
+mpirun:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpirun
+mpirun (Open MPI) 4.1.8
+
+Report bugs to http://www.open-mpi.org/community/help/
+
+mpicc:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicc
+gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+mpicxx:
+/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/bin/mpicxx
+g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+==========================================
+JOB ID:          88045
+JOB NAME:        qasmbench-benchmark
+NODES:           32
+TASKS:           32
+CPUS/TASK:       48
+TOTAL CPUS:      1536
+NODE LIST:
+cbcn0039
+cbcn0040
+cbcn0052
+cbcn0053
+cbcn0054
+cbcn0055
+cbcn0056
+cbcn0057
+cbcn0058
+cbcn0059
+cbcn0060
+cbcn0165
+cbcn0166
+cbcn0167
+cbcn0168
+cbcn0169
+cbcn0170
+cbcn0171
+cbcn0172
+cbcn0173
+cbcn1955
+cbcn1956
+cbcn1957
+cbcn1958
+cbcn1959
+cbcn1960
+cbcn1961
+cbcn1962
+cbcn1963
+cbcn1964
+cbcn1965
+cbcn1966
+==========================================
+==================================================
+ RUNS WITH MPI COMPLETE
+==================================================
