@@ -13,6 +13,31 @@ CircuitCutting: configurable Qiskit circuit cutting + knitting, executed through
         cc.compare_partitioners(24)                      # cheap plan-only comparison
     agent.stop_ray_clusters()
 
+Observables (the `observable` argument) - one OR several can be reconstructed in the same run:
+
+    observable="data"                  # single Z-product on the first n_data qubits   (default)
+    observable="all"                   # single Z-product on all qubits
+    observable="data_each"             # one observable per data qubit: Z0, Z1, ...
+    observable="all_each"              # one observable per qubit
+    observable=[0, 2, 5]               # single Z-product Z0 Z2 Z5            (flat list of ints)
+    observable=[[0], [1], [0, 1]]      # several Z-products                   (list of int lists)
+    observable=["ZZIII", "XIIIX"]      # several Pauli strings (qiskit order: rightmost char = qubit 0,
+                                       # length must equal the transpiled circuit width)
+    observable=[Pauli("ZZ"), [0, 1]]   # Pauli objects / int lists / strings can be mixed
+
+Cut strategies (the `cut_strategy` argument):
+
+    cut_strategy="gate"    # default: qubit partition from `partitioner`, gate cuts only (original behaviour)
+    cut_strategy="joint"   # Frohler et al. 2026: two-stage KL (gate cuts, then wire cuts) with gate-group-aware costs
+                           # extra args: use_wire_cuts, use_gate_groups, kl_runs, kl_max_passes, kl_patience
+    CircuitCutting(factory, agent, cut_strategy="joint", qubits_per_subcircuit=10)
+
+All observables share the same cut + the same partition. Note that each extra observable that needs a
+different measurement basis adds subexperiments (all-Z observables are the cheapest to mix).
+The first observable is also reported in the legacy columns (actual_expval / cutting_expval); the
+error columns (absolute_error, error_in_sigmas, ...) are the MAX over observables, and the per-observable
+values are stored as JSON lists (actual_expvals, cutting_expvals, absolute_errors, ...).
+
 This module contains no circuit/algorithm code: the circuit is always supplied by the caller.
 Circuits must be measurement-free. Pass agent=None to execute in-process (small local tests).
 """
@@ -34,8 +59,10 @@ from qiskit.quantum_info import Pauli, PauliList
 from qiskit_addon_cutting import generate_cutting_experiments, partition_problem, reconstruct_expectation_values
 from qiskit_aer.primitives import SamplerV2
 
+from .joint_cutting import expand_paulis, plan_joint_cuts
+
 OK_STATUSES = ("ok", "skipped_gamma", "planned")
-SEP_WIDTH = 110
+SEP_WIDTH = 116
 
 # ============================================================
 # Logging / timing
@@ -93,10 +120,31 @@ def cut_statistics(bases):
     return len(bases), log10_gamma, log10_terms
 
 # ============================================================
+# Observable helpers
+# ============================================================
+def _is_int(x):
+    return isinstance(x, (int, np.integer)) and not isinstance(x, bool)
+
+def pauli_support(pauli):
+    """Qubit indices on which the Pauli acts non-trivially."""
+    return [int(q) for q in np.flatnonzero(np.asarray(pauli.z) | np.asarray(pauli.x))]
+
+def pauli_name(pauli):
+    """Compact human-readable name, e.g. Z0Z1X4 (identity -> 'I')."""
+    label = pauli.to_label().lstrip("+-i")
+    name = "".join(f"{c}{i}" for i, c in enumerate(reversed(label)) if c != "I")
+    return name or "I"
+
+def _json_list(values):
+    return json.dumps([None if v is None else float(v) for v in values])
+
+# ============================================================
 # Main class
 # ============================================================
 class CircuitCutting:
     PARTITIONERS = ("gurobi", "kernighan_lin", "spectral", "contiguous")
+    CUT_STRATEGIES = ("gate", "joint")
+    OBSERVABLE_KEYWORDS = ("data", "all", "data_each", "all_each")
 
     def __init__(
         self,
@@ -104,12 +152,18 @@ class CircuitCutting:
         agent=None,
         *,
         # --- circuit handling ---
-        observable="data",             # "data" (Z on first n_data qubits) | "all" | list of qubit indices
+        observable="data",             # keyword | list of qubit indices | list of (int lists / Pauli strings / Paulis) - see module docstring
         basis_gates=("cx", "u"),
         optimization_level=1,
         # --- partitioning ---
         qubits_per_subcircuit=10,
-        partitioner="gurobi",          # one of PARTITIONERS, or callable(edge_weights, n_qubits, max_per) -> labels
+        cut_strategy="gate",           # "gate": qubit partition by `partitioner` | "joint": gate+wire cuts with gate groups (paper)
+        partitioner="gurobi",          # (cut_strategy="gate") one of PARTITIONERS, or callable(edge_weights, n_qubits, max_per) -> labels
+        use_wire_cuts=True,            # (joint) run stage 2 (wire cuts)
+        use_gate_groups=True,          # (joint) detect cascades / parallel CNOT groups and cost them jointly
+        kl_runs=10,                    # (joint) random restarts of stage 1 (paper: 50)
+        kl_max_passes=10,              # (joint) max KL passes per run
+        kl_patience=15,                # (joint) stop a pass after this many non-improving moves
         gurobi_time_limit=300,
         gurobi_mip_gap=0.0,
         seed=0,                        # used by kernighan_lin
@@ -131,12 +185,16 @@ class CircuitCutting:
     ):
         if isinstance(partitioner, str) and partitioner not in self.PARTITIONERS:
             raise ValueError(f"partitioner must be one of {self.PARTITIONERS} or a callable")
+        if cut_strategy not in self.CUT_STRATEGIES:
+            raise ValueError(f"cut_strategy must be one of {self.CUT_STRATEGIES}")
         if qubits_per_subcircuit < 2:
             raise ValueError("qubits_per_subcircuit must be >= 2")
         if run_actual not in (True, False, "auto"):
             raise ValueError("run_actual must be True, False or 'auto'")
         if not (isinstance(circuit, QuantumCircuit) or callable(circuit)):
             raise TypeError("circuit must be a QuantumCircuit or a callable n_data -> QuantumCircuit")
+        if isinstance(observable, str) and observable not in self.OBSERVABLE_KEYWORDS:
+            raise ValueError(f"observable string must be one of {self.OBSERVABLE_KEYWORDS}")
 
         self.agent = agent
         self.circuit = circuit
@@ -144,7 +202,13 @@ class CircuitCutting:
         self.basis_gates = list(basis_gates)
         self.optimization_level = optimization_level
         self.qubits_per_subcircuit = qubits_per_subcircuit
+        self.cut_strategy = cut_strategy
         self.partitioner = partitioner
+        self.use_wire_cuts = use_wire_cuts
+        self.use_gate_groups = use_gate_groups
+        self.kl_runs = kl_runs
+        self.kl_max_passes = kl_max_passes
+        self.kl_patience = kl_patience
         self.gurobi_time_limit = gurobi_time_limit
         self.gurobi_mip_gap = gurobi_mip_gap
         self.seed = seed
@@ -193,7 +257,7 @@ class CircuitCutting:
         return self._gurobi_env
 
     # --------------------------------------------------------
-    # Circuit / observable
+    # Circuit / observables
     # --------------------------------------------------------
     def _make_circuit(self, n_data):
         """Return (circuit, n_data). n_data = size parameter / number of 'data' qubits."""
@@ -207,32 +271,84 @@ class CircuitCutting:
             raise TypeError("circuit callable must return a QuantumCircuit")
         return qc, n_data
 
-    def _observable_qubits(self, n_data, n_total):
-        if self.observable == "data":
-            return list(range(n_data))
-        if self.observable == "all":
-            return list(range(n_total))
-        return sorted(int(q) for q in self.observable)
-
     @staticmethod
-    def _build_observable(n_total, z_qubits):
+    def _z_product(n_total, z_qubits):
+        z_qubits = sorted(int(q) for q in z_qubits)
+        if any(q < 0 or q >= n_total for q in z_qubits):
+            raise ValueError(f"observable qubit index out of range for a {n_total}-qubit circuit: {z_qubits}")
         z = np.zeros(n_total, dtype=bool)
         z[z_qubits] = True
         x = np.zeros(n_total, dtype=bool)
-        return PauliList([Pauli((z, x))])
+        return Pauli((z, x))
+
+    def _resolve_observables(self, n_data, n_total):
+        """Turn self.observable into a list of Pauli objects (each of length n_total)."""
+        obs = self.observable
+        if isinstance(obs, str):
+            if obs == "data":
+                specs = [list(range(n_data))]
+            elif obs == "all":
+                specs = [list(range(n_total))]
+            elif obs == "data_each":
+                specs = [[q] for q in range(n_data)]
+            else:  # "all_each"
+                specs = [[q] for q in range(n_total)]
+        elif isinstance(obs, Pauli):
+            specs = [obs]
+        else:
+            obs = list(obs)
+            if not obs:
+                raise ValueError("observable list is empty")
+            if all(_is_int(q) for q in obs):
+                specs = [obs]               # legacy: flat list of ints = ONE Z-product
+            else:
+                specs = obs
+
+        paulis = []
+        for spec in specs:
+            if isinstance(spec, Pauli):
+                p = spec
+            elif isinstance(spec, str):
+                p = Pauli(spec)
+            else:
+                p = self._z_product(n_total, spec)
+            if p.num_qubits != n_total:
+                raise ValueError(f"Pauli observable '{p.to_label()}' acts on {p.num_qubits} qubits, "
+                                 f"but the transpiled circuit has {n_total}")
+            paulis.append(p)
+        return paulis
 
     @staticmethod
-    def _expectation_from_counts(counts, z_qubits):
-        """<prod Z_q for q in z_qubits> from all-qubit counts (qubit q is bit -1-q of the string)."""
+    def _build_observable(paulis):
+        return PauliList(list(paulis))
+
+    @staticmethod
+    def _expectation_from_counts(counts, support):
+        """<prod P_q for q in support> from all-qubit counts, measured in P's eigenbasis
+        (qubit q is bit -1-q of the string)."""
         total = sum(counts.values())
         if total == 0:
             raise RuntimeError("Actual-circuit execution returned zero shots.")
         acc = 0.0
         for bitstring, count in counts.items():
             bits = bitstring.replace(" ", "")
-            parity = sum(bits[-1 - q] == "1" for q in z_qubits) % 2
+            parity = sum(bits[-1 - q] == "1" for q in support) % 2
             acc += (1.0 if parity == 0 else -1.0) * count
         return acc / total
+
+    @staticmethod
+    def _measured_circuit(tqc, pauli=None):
+        """Copy of tqc with basis rotations for pauli's X/Y factors (none for Z-only) + measure_all."""
+        qc = tqc.copy()
+        if pauli is not None:
+            for q in range(pauli.num_qubits):
+                if pauli.x[q] and pauli.z[q]:      # Y
+                    qc.sdg(q)
+                    qc.h(q)
+                elif pauli.x[q]:                   # X
+                    qc.h(q)
+        qc.measure_all()
+        return qc
 
     # --------------------------------------------------------
     # Partitioners
@@ -357,6 +473,26 @@ class CircuitCutting:
         )
         return labels, info
 
+    def _plan_joint(self, tqc, paulis):
+        """Paper's joint-cutting placement. Returns (cut_circuit, labels, cut_paulis, info). The cut circuit
+        contains explicit Move instructions for wire cuts; labels/observables refer to that wider circuit."""
+        cut_qc, frag, final_q, info = plan_joint_cuts(
+            tqc, self.qubits_per_subcircuit,
+            use_wire_cuts=self.use_wire_cuts, use_gate_groups=self.use_gate_groups,
+            runs=self.kl_runs, max_passes=self.kl_max_passes, patience=self.kl_patience, seed=self.seed)
+        labels = normalize_labels(frag)
+        sizes = Counter(labels)
+        if max(sizes.values()) > self.qubits_per_subcircuit:
+            raise RuntimeError("Joint placement produced a fragment wider than qubits_per_subcircuit.")
+        info.update(
+            partitioner="joint",
+            partition_cut_gates=info["joint_gate_cuts"],
+            partition_wire_cuts=info["joint_wire_cuts"],
+            partition_max_fragment=int(max(sizes.values())),
+            partition_min_fragment=int(min(sizes.values())),
+        )
+        return cut_qc, labels, expand_paulis(paulis, final_q, cut_qc.num_qubits), info
+
     # --------------------------------------------------------
     # Execution backends
     # --------------------------------------------------------
@@ -416,35 +552,71 @@ class CircuitCutting:
         self._log(f"{tag}circuit: {tqc.num_qubits} qubits, depth {tqc.depth()}, {len(tqc.data)} ops, {two_q} two-qubit gates")
         return tqc, n_data
 
-    def _stage_actual(self, tqc, z_qubits, timings, metrics, artifacts, tag):
+    def _stage_actual(self, tqc, paulis, timings, metrics, artifacts, tag):
+        """Reference (uncut) expectation values for all observables.
+        All diagonal (Z/I-only) observables share ONE execution; each observable containing X/Y gets its own
+        rotated execution. Returns (expvals, stderrs) lists."""
+        n_obs = len(paulis)
+        expvals = [None] * n_obs
         with timed(timings, "actual_execution", tag, self.verbose):
-            qc = tqc.copy()
-            qc.measure_all()
-            counts = self._run_actual_circuit(qc)
-            expval = self._expectation_from_counts(counts, z_qubits)
+            diagonal = [i for i, p in enumerate(paulis) if not np.any(p.x)]
+            if diagonal:
+                counts = self._run_actual_circuit(self._measured_circuit(tqc))
+                artifacts["actual_counts"] = np.array([[str(k), int(v)] for k, v in counts.items()], dtype=object)
+                for i in diagonal:
+                    expvals[i] = self._expectation_from_counts(counts, pauli_support(paulis[i]))
+            for i, p in enumerate(paulis):
+                if expvals[i] is not None:
+                    continue
+                counts = self._run_actual_circuit(self._measured_circuit(tqc, p))
+                artifacts[f"actual_counts_obs{i}"] = np.array([[str(k), int(v)] for k, v in counts.items()], dtype=object)
+                expvals[i] = self._expectation_from_counts(counts, pauli_support(p))
 
-        metrics["actual_expval"] = float(expval)
+        # shot-noise standard error of each reference value itself
+        stderrs = [math.sqrt(max(0.0, 1.0 - e ** 2) / self.shots) for e in expvals]
+        metrics["actual_expval"] = float(expvals[0])                  # first observable (legacy column)
+        metrics["actual_expvals"] = _json_list(expvals)
         metrics["actual_shots"] = int(self.shots)
-        # shot-noise standard error of the reference value itself
-        metrics["actual_stderr"] = math.sqrt(max(0.0, 1.0 - expval ** 2) / self.shots)
-        artifacts["actual_counts"] = np.array([[str(k), int(v)] for k, v in counts.items()], dtype=object)
-        self._log(f"{tag}actual (uncut) <Z> = {expval:.6g} (+/- {metrics['actual_stderr']:.2g})")
+        metrics["actual_stderr"] = float(stderrs[0])
+        metrics["actual_stderrs"] = _json_list(stderrs)
+        metrics["actual_n_executions"] = (1 if diagonal else 0) + (n_obs - len(diagonal))
+        artifacts["actual_expvals"] = np.array(expvals, dtype=float)
+        if n_obs == 1:
+            self._log(f"{tag}actual (uncut) <{pauli_name(paulis[0])}> = {expvals[0]:.6g} (+/- {stderrs[0]:.2g})")
+        else:
+            self._log(f"{tag}actual (uncut): {n_obs} observables, {metrics['actual_n_executions']} execution(s); "
+                      f"first <{pauli_name(paulis[0])}> = {expvals[0]:.6g} (+/- {stderrs[0]:.2g})")
+        return expvals, stderrs
 
-    def _stage_partition(self, tqc, timings, metrics, artifacts, tag):
+    def _stage_partition(self, tqc, paulis, timings, metrics, artifacts, tag):
+        """Returns (circuit to cut, fragment labels, observables for that circuit)."""
         with timed(timings, "partition", tag, self.verbose):
-            edge_weights = build_edge_weights(tqc)
-            labels, info = self._partition(edge_weights, tqc.num_qubits)
+            if self.cut_strategy == "joint":
+                cut_qc, labels, cut_paulis, info = self._plan_joint(tqc, paulis)
+            else:
+                edge_weights = build_edge_weights(tqc)
+                labels, info = self._partition(edge_weights, tqc.num_qubits)
+                cut_qc, cut_paulis = tqc, paulis
         metrics.update(info)
+        metrics["cut_strategy"] = self.cut_strategy
         metrics["n_fragments"] = len(set(labels))
         artifacts["partition_labels"] = np.array(labels, dtype=int)
+        extra = ""
+        if self.cut_strategy == "joint":
+            extra = (f", {info['joint_wire_cuts']} wire cuts, {info['joint_n_groups']} gate groups, "
+                     f"est log10(kappa)={info['joint_est_log10_kappa']:.2f} "
+                     f"(individual cuts: {info['joint_indiv_log10_kappa']:.2f})")
+            if info["joint_grouped_gates"]:
+                self._log(f"{tag}NOTE: qiskit-addon-cutting has no joint gate-cut decomposition; grouped gates are "
+                          f"cut individually at execution, so log10_gamma will match the 'individual' estimate.")
         self._log(f"{tag}partition[{info['partitioner']}]: {metrics['n_fragments']} fragments, "
-                  f"{info['partition_cut_gates']} cut gates")
-        return labels
+                  f"{info['partition_cut_gates']} cut gates{extra}")
+        return cut_qc, labels, cut_paulis
 
-    def _stage_cut(self, tqc, labels, z_qubits, timings, metrics, tag):
+    def _stage_cut(self, tqc, cut_qc, labels, cut_paulis, timings, metrics, tag):
         with timed(timings, "cut_circuit", tag, self.verbose):
-            observable = self._build_observable(tqc.num_qubits, z_qubits)
-            problem = partition_problem(circuit=tqc, partition_labels=labels, observables=observable)
+            observable = self._build_observable(cut_paulis)
+            problem = partition_problem(circuit=cut_qc, partition_labels=labels, observables=observable)
             subcircuits, subobservables, bases = problem.subcircuits, problem.subobservables, problem.bases
 
         num_cuts, log10_gamma, log10_terms = cut_statistics(bases)
@@ -530,13 +702,18 @@ class CircuitCutting:
             artifacts["task_n_circuits"] = np.array([x["n_circuits"] for x in tasks], dtype=int)
         return results
 
-    def _stage_reconstruct(self, results, coefficients, subobservables, timings, metrics, artifacts, tag):
+    def _stage_reconstruct(self, results, coefficients, subobservables, paulis, timings, metrics, artifacts, tag):
         with timed(timings, "reconstruction", tag, self.verbose):
             expvals = reconstruct_expectation_values(results, coefficients, subobservables)
-        expval = float(np.real(expvals[0]))
-        metrics["cutting_expval"] = expval
-        artifacts["reconstructed_expvals"] = np.real(np.array(expvals, dtype=complex))
-        self._log(f"{tag}reconstructed <Z> = {expval:.6g}")
+        cut_vals = [float(np.real(v)) for v in expvals]
+        metrics["cutting_expval"] = cut_vals[0]                       # first observable (legacy column)
+        metrics["cutting_expvals"] = _json_list(cut_vals)
+        artifacts["reconstructed_expvals"] = np.array(cut_vals, dtype=float)
+        if len(cut_vals) == 1:
+            self._log(f"{tag}reconstructed <{pauli_name(paulis[0])}> = {cut_vals[0]:.6g}")
+        else:
+            self._log(f"{tag}reconstructed {len(cut_vals)} observables; first <{pauli_name(paulis[0])}> = {cut_vals[0]:.6g}")
+        return cut_vals
 
     @staticmethod
     def _finalize(metrics, timings, run_start):
@@ -557,6 +734,7 @@ class CircuitCutting:
         timings, artifacts = {}, {}
         metrics = {
             "n_qubits": n_data,
+            "n_observables": None,
             "actual_expval": None,
             "cutting_expval": None,
             "absolute_error": None,
@@ -569,18 +747,24 @@ class CircuitCutting:
         self._log(f"{tag}start: {n_data} data qubits, max {self.qubits_per_subcircuit} qubits/subcircuit")
 
         tqc, n_data = self._stage_build_and_transpile(n_data, timings, metrics, tag)
-        z_qubits = self._observable_qubits(n_data, tqc.num_qubits)
+        paulis = self._resolve_observables(n_data, tqc.num_qubits)
+        metrics["n_observables"] = len(paulis)
+        metrics["observable_labels"] = json.dumps([pauli_name(p) for p in paulis])
+        self._log(f"{tag}observables: {len(paulis)}"
+                  + (f" ({', '.join(pauli_name(p) for p in paulis[:6])}{', ...' if len(paulis) > 6 else ''})"))
 
         do_actual = self._should_run_actual(tqc.num_qubits)
         metrics["actual_run"] = do_actual
+        actual_vals, actual_errs = None, None
         if do_actual:
-            self._stage_actual(tqc, z_qubits, timings, metrics, artifacts, tag)
+            actual_vals, actual_errs = self._stage_actual(tqc, paulis, timings, metrics, artifacts, tag)
         else:
             self._log(f"{tag}actual (uncut) run skipped ({tqc.num_qubits} simulated qubits, "
                       f"run_actual={self.run_actual!r}, limit < {self.actual_max_qubits})")
 
-        labels = self._stage_partition(tqc, timings, metrics, artifacts, tag)
-        subcircuits, subobservables, log10_terms = self._stage_cut(tqc, labels, z_qubits, timings, metrics, tag)
+        cut_qc, labels, cut_paulis = self._stage_partition(tqc, paulis, timings, metrics, artifacts, tag)
+        subcircuits, subobservables, log10_terms = self._stage_cut(
+            tqc, cut_qc, labels, cut_paulis, timings, metrics, tag)
 
         if metrics["gamma_exceeds_limit"]:
             self._log(f"{tag}WARNING: gamma exceeds {self.max_gamma}; reconstruction variance will be very large.")
@@ -597,22 +781,29 @@ class CircuitCutting:
         subexperiments, coefficients, total_subexp = self._stage_generate(
             subcircuits, subobservables, log10_terms, timings, metrics, artifacts, tag)
         results = self._stage_execute(subexperiments, total_subexp, timings, metrics, artifacts, tag)
-        self._stage_reconstruct(results, coefficients, subobservables, timings, metrics, artifacts, tag)
+        cut_vals = self._stage_reconstruct(results, coefficients, subobservables, paulis, timings, metrics, artifacts, tag)
 
         # ---- error vs. reference + overhead comparison ----
-        if do_actual and metrics["actual_expval"] is not None:
-            err = abs(metrics["cutting_expval"] - metrics["actual_expval"])
+        if do_actual and actual_vals is not None:
+            errs = [abs(c - a) for c, a in zip(cut_vals, actual_vals)]
+            rel = [e / abs(a) * 100.0 for e, a in zip(errs, actual_vals) if abs(a) > 1e-15]
+            sig = [e / s if s > 0 else None for e, s in zip(errs, actual_errs)]
+            sig_defined = [v for v in sig if v is not None]
+            err = max(errs)                                            # worst observable
             metrics["absolute_error"] = err
-            ref = abs(metrics["actual_expval"])
-            metrics["relative_error_percent"] = err / ref * 100.0 if ref > 1e-15 else None
-            if metrics["actual_stderr"] > 0:
-                metrics["error_in_sigmas"] = err / metrics["actual_stderr"]
+            metrics["absolute_errors"] = _json_list(errs)
+            metrics["mean_absolute_error"] = float(np.mean(errs))
+            metrics["relative_error_percent"] = max(rel) if rel else None
+            metrics["error_in_sigmas"] = max(sig_defined) if sig_defined else None
+            metrics["error_in_sigmas_list"] = _json_list(sig)
             pipeline = sum(timings.get(k, 0.0) for k in
                            ("cut_circuit", "generate_experiments", "ray_execution", "reconstruction"))
             metrics["t_cutting_pipeline"] = pipeline
             metrics["cutting_vs_actual_time_ratio"] = pipeline / timings["actual_execution"] if timings["actual_execution"] > 0 else None
-            self._log(f"{tag}comparison: actual={metrics['actual_expval']:.6g}, cutting={metrics['cutting_expval']:.6g}, "
-                      f"abs_err={err:.4g}, cutting/actual time={metrics['cutting_vs_actual_time_ratio']:.2f}x")
+            ratio = metrics["cutting_vs_actual_time_ratio"]
+            ratio_txt = f"{ratio:.2f}x" if ratio is not None else "n/a"
+            self._log(f"{tag}comparison: first actual={actual_vals[0]:.6g}, first cutting={cut_vals[0]:.6g}, "
+                      f"max abs_err={err:.4g} over {len(errs)} obs, cutting/actual time={ratio_txt}")
 
         self._finalize(metrics, timings, run_start)
         self._log(f"{tag}{'total':<26}: {timings['total']:10.3f} s")
@@ -655,20 +846,23 @@ class CircuitCutting:
 
     def compare_partitioners(self, n_data=None, partitioners=None):
         """Plan-only (no execution) comparison of partitioners for one size. Returns list of metrics."""
-        partitioners = partitioners or list(self.PARTITIONERS)
-        saved = (self.partitioner, self.dry_run, self.run_actual, self.save)
+        partitioners = partitioners or (list(self.PARTITIONERS) + ["joint"])   # "joint" = cut_strategy="joint"
+        saved = (self.partitioner, self.cut_strategy, self.dry_run, self.run_actual, self.save)
         rows = []
         try:
             self.dry_run, self.run_actual, self.save = True, False, False
             for name in partitioners:
-                self.partitioner = name
+                if name == "joint":
+                    self.cut_strategy = "joint"
+                else:
+                    self.cut_strategy, self.partitioner = "gate", name
                 try:
                     metrics, _ = self.run(n_data)
                 except Exception as exc:
                     metrics = {"n_qubits": n_data, "partitioner": name, "status": "failed", "error": str(exc)}
                 rows.append(metrics)
         finally:
-            self.partitioner, self.dry_run, self.run_actual, self.save = saved
+            self.partitioner, self.cut_strategy, self.dry_run, self.run_actual, self.save = saved
 
         print("\n" + "=" * 80)
         print(f"PARTITIONER COMPARISON (N={n_data})")
@@ -736,15 +930,16 @@ class CircuitCutting:
     def print_summary(self, total_time=None):
         f = self._fmt
         print("\n" + "=" * SEP_WIDTH)
-        print("SUMMARY")
+        print("SUMMARY  (actual/cutting = first observable; abs_err & sigmas = max over observables)")
         print("=" * SEP_WIDTH)
-        print(f"{'N':>4} {'status':>13} {'actual':>10} {'cutting':>10} {'abs_err':>10} {'sigmas':>7} "
+        print(f"{'N':>4} {'obs':>4} {'status':>13} {'actual':>10} {'cutting':>10} {'abs_err':>10} {'sigmas':>7} "
               f"{'frags':>6} {'cuts':>5} {'log10g':>7} {'subexp':>8} {'ray(s)':>8} {'total(s)':>9}")
         for m in self.all_metrics:
             if m.get("status") not in OK_STATUSES:
-                print(f"{m['n_qubits']:>4} {m.get('status', '?'):>13} {m.get('error', '')}")
+                print(f"{m['n_qubits']:>4} {'':>4} {m.get('status', '?'):>13} {m.get('error', '')}")
                 continue
-            print(f"{m['n_qubits']:>4} {m['status']:>13} {f(m.get('actual_expval'))} {f(m.get('cutting_expval'))} "
+            print(f"{m['n_qubits']:>4} {m.get('n_observables') or 1:>4} {m['status']:>13} "
+                  f"{f(m.get('actual_expval'))} {f(m.get('cutting_expval'))} "
                   f"{f(m.get('absolute_error'))} {f(m.get('error_in_sigmas'), 7, 2)} "
                   f"{m['n_fragments']:>6} {m['n_cuts']:>5} {m['log10_gamma']:>7.1f} "
                   f"{m.get('total_subexperiments', 0):>8} {f(m.get('t_ray_execution'), 8, 2)} {f(m.get('t_total'), 9, 2)}")
