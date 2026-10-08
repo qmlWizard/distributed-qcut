@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=ghz-comparision
+#SBATCH --job-name=qft-comparision
 #SBATCH --partition=shiwalik
 #SBATCH --nodes=128
 #SBATCH --ntasks-per-node=1
@@ -52,7 +52,7 @@ echo "=========================================="
 # ============================================================
 
 echo "=========================================="
-echo "Starting GHZ benchmark"
+echo "Starting QFT benchmark"
 echo "=========================================="
 
 qbits=(22 26 30 34 38 40 44 48)
@@ -70,7 +70,7 @@ do
         -N1 \
         -n1 \
         -w "$HEAD_NODE" \
-        python algorithms/ghz.py \
+        python algorithms/qft.py \
             --qubits "${qbits[$i]}" \
             --qubits-per-subcircuit "${max_qbits[$i]}" \
             --iterations 10 \
@@ -80,8 +80,9 @@ do
             --sv-max 32 \
             --benchmark \
             --no-show \
-            --plot "algorithms/results/ghz_${qbits[$i]}q_${max_qbits[$i]}max.png" \
-            --data "algorithms/results/ghz_${qbits[$i]}q_${max_qbits[$i]}max.json"
+            --plot "algorithms/results/qft_${qbits[$i]}q_${max_qbits[$i]}max.png" \
+            --data "algorithms/results/qft_${qbits[$i]}q_${max_qbits[$i]}max.json"
+
 done
 
 echo "=========================================="

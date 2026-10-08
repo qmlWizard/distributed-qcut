@@ -1,9 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=grover-comparision
-#SBATCH --partition=terai
-#SBATCH --nodes=25
+#SBATCH --partition=shiwalik
+#SBATCH --nodes=128
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=48
+#SBATCH --mem=150G
 #SBATCH --time=24:00:00
 #SBATCH --output=/home/cdacB/santhoshj/digvijay/distributed-qcut/slurm_jobs/output/%j.out
 #SBATCH --error=/home/cdacB/santhoshj/digvijay/distributed-qcut/slurm_jobs/error/%j.err
@@ -55,7 +56,7 @@ echo "Starting Grover benchmark"
 echo "=========================================="
 
 qbits=(22 26 30 34 38 40 44 48)
-max_qbits=(15 15 20 20 25 25 30 30)
+max_qbits=(15 15 20 20 28 30 30 30)
 
 for i in "${!qbits[@]}"
 do
@@ -73,7 +74,7 @@ do
             --qubits "${qbits[$i]}" \
             --qubits-per-subcircuit "${max_qbits[$i]}" \
             --iterations 10 \
-            --samples 10000 \
+            --samples 100000 \
             --cut-strategy joint \
             --max-iterations 100 \
             --sv-max 32 \
