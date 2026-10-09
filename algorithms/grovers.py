@@ -48,8 +48,8 @@ import matplotlib.pyplot as plt
 from qiskit import QuantumCircuit, transpile
 from qiskit.quantum_info import Statevector
 
-from circuit_cut.distribute import RayAgent
-from circuit_cut.cutting import CircuitCutting
+from circuit_cutting.distribute import RayAgent
+from circuit_cutting.cutting import CircuitCutting
 
 
 # ============================================================

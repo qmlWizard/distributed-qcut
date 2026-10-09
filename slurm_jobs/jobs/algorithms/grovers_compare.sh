@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=grover-comparision
 #SBATCH --partition=shiwalik
-#SBATCH --nodes=128
+#SBATCH --nodes=52
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=48
-#SBATCH --mem=150G
+#SBATCH --mem=64G
 #SBATCH --time=24:00:00
 #SBATCH --output=/home/cdacB/santhoshj/digvijay/distributed-qcut/slurm_jobs/output/%j.out
 #SBATCH --error=/home/cdacB/santhoshj/digvijay/distributed-qcut/slurm_jobs/error/%j.err
@@ -21,8 +21,15 @@ spack load /oxmullt
 spack load /gaily2jw
 spack load /2wdhn7r
 
+# ============================================================
+# OpenBLAS
+# ============================================================
+
 export OPENBLAS_ROOT=$(spack location -i /geypa2)
 export LD_LIBRARY_PATH=$OPENBLAS_ROOT/lib:$LD_LIBRARY_PATH
+
+export MPI_LIB=/home/apps/spack/opt/spack/linux-cascadelake/openmpi-4.1.8-gaily2jwc3klcubp55unnlgiaglqu7mf/lib
+export LD_LIBRARY_PATH=$MPI_LIB:$LD_LIBRARY_PATH
 
 conda activate qiskit_dist
 export RAY_AUTH_MODE=disabled
@@ -66,18 +73,14 @@ do
     echo "Qubits per subcircuit: ${max_qbits[$i]}"
     echo "=========================================="
 
-    srun \
-        -N1 \
-        -n1 \
-        -w "$HEAD_NODE" \
-        python algorithms/grovers.py \
+    python -m algorithms.grovers \
             --qubits "${qbits[$i]}" \
             --qubits-per-subcircuit "${max_qbits[$i]}" \
             --iterations 10 \
             --samples 100000 \
             --cut-strategy joint \
             --max-iterations 100 \
-            --sv-max 32 \
+            --sv-max 20 \
             --benchmark \
             --no-show \
             --plot "algorithms/results/grover_${qbits[$i]}q_${max_qbits[$i]}max.png" \
